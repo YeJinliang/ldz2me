@@ -1308,6 +1308,13 @@ hr {
     color: #006699;
     border-color: #006699; }
 
+.navigation_social_item a {
+  border: 0px solid #006699;
+}
+.social_fonts{
+  font-size: 22px;
+}
+
 .btn-secondary {
   border-color: #5ba4e5;
   color: #5ba4e5; }
