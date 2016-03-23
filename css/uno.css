@@ -1088,9 +1088,8 @@ code {
 
 .content-wrapper {
   z-index: 800;
-  width: 68%;
-  max-width: 960px;
-  margin-left: 32%; }
+  width: 70%;
+  margin-left: 30%; }
 
 .content-wrapper__inner {
   margin: 0 10%;
@@ -1200,8 +1199,8 @@ hr {
   background-size: cover; }
 
 .panel-cover--collapsed {
-  width: 32%;
-  max-width: 430px; }
+  width: 30%;
+  max-width: 700px; }
 
 .panel-cover--overlay {
   display: block;
@@ -1555,8 +1554,8 @@ input[type="tel"] {
     color: #cccccc; }
 
 @media all and (min-width: 1300px) {
-  .content-wrapper {
-    margin-left: 430px; } }
+/*  .content-wrapper {
+    margin-left: 430px; } */}
 @media all and (max-width: 1100px) {
   .panel-cover__logo {
     width: 70px; }
