@@ -1181,7 +1181,7 @@ hr {
   color: #FFF; }
 
 .panel-subtitle {
-  font-family: "Roboto Slab", serif;
+  font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "WenQuanYi Micro Hei", serif;
   font-size: 1.2em;
   font-weight: lighter;
   letter-spacing: 3px;
@@ -1261,7 +1261,7 @@ hr {
     color: #FFF; }
 
 .cover-navigation {
-  margin-top: 10px; }
+  margin-top: 42px; }
 
 .cover-navigation--social {
   margin-left: 30px; }
