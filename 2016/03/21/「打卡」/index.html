@@ -84,18 +84,18 @@
             var hour = today.getHours();
             var  spanHello = document.getElementById("hello");
             if (hour >= 4 && hour < 10) {
-             spanHello.innerText("早安");
+              spanHello.innerText = "早安";
            } else if (hour >= 17 && hour < 24 ) { 
-            spanHello.innerText("晚安");
+            spanHello.innerText = "晚安";
 
           } else if (hour >= 10 && hour < 14 ) { 
-            spanHello.innerText("午安");
+            spanHello.innerText = "午安";
 
           } else if (hour >= 0 && hour < 4 ) { 
-            spanHello.innerText("别熬夜了");
+            spanHello.innerText = "别熬夜了";
 
           } else {
-            spanHello.innerText("日安");
+            spanHello.innerText = "日安";
 
           } 
         </script>
