@@ -77,10 +77,26 @@
         
         <p class="panel-cover__description">
           哈喽 ~
-          
-          晚安          
-          
+          <span id="hello">晚安</span>
           ，这里是toMe，我是柳德智，一个iOS Coder，很高兴在这里遇见你，你在这里可以看到关于我的一切。希望这是一次能够让你感到相逢恨晚的初见。(⁎⁍̴̛ᴗ⁍̴̛⁎)‼ 
+          <script>     
+           var  spanHello = document.getElementById("hello");
+           if (hour >= 4 && hour < 10) {
+             spanHello.innerText("早安");
+           } else if (hour >= 17 && hour < 24 ) { 
+            spanHello.innerText("晚安");
+            
+          } else if (hour >= 10 && hour < 14 ) { 
+            spanHello.innerText("午安");
+
+          } else if (hour >= 0 && hour < 4 ) { 
+            spanHello.innerText("别熬夜了");
+            
+          } else {
+            spanHello.innerText("日安");
+
+          } 
+        </script>
           <!-- 夜 -->
         </p>
         <hr class="panel-cover__divider panel-cover__divider--secondary" />
