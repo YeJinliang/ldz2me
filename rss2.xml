@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>That&#39;s all to Me</title>
+    <link>http://www.ldz2.me/</link>
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description></description>
+    <pubDate>Thu, 24 Mar 2016 06:39:31 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>「打卡」</title>
+      <link>http://www.ldz2.me/2016/03/21/%E3%80%8C%E6%89%93%E5%8D%A1%E3%80%8D/</link>
+      <guid>http://www.ldz2.me/2016/03/21/%E3%80%8C%E6%89%93%E5%8D%A1%E3%80%8D/</guid>
+      <pubDate>Mon, 21 Mar 2016 06:25:25 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;3/20/2016 10:33:44 PM&lt;br&gt;这个时间是ldz2.me在我浏览器，朋友浏览器第一次伸懒腰的时间。&lt;/p&gt;
+&lt;p&gt;###第一次&lt;/p&gt;
+&lt;p&gt;凡事总有第一次的。&lt;/p&gt;
+&lt;p&gt;我入坑的路线是这样的：&lt;/p&gt;
+&lt;p&gt;ヾ(｡｀Д´｡)卧槽，这代码，这bug，度
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;3/20/2016 10:33:44 PM&lt;br&gt;这个时间是ldz2.me在我浏览器，朋友浏览器第一次伸懒腰的时间。&lt;/p&gt;
+&lt;p&gt;###第一次&lt;/p&gt;
+&lt;p&gt;凡事总有第一次的。&lt;/p&gt;
+&lt;p&gt;我入坑的路线是这样的：&lt;/p&gt;
+&lt;p&gt;ヾ(｡｀Д´｡)卧槽，这代码，这bug，度娘无力啊 —— Google君你在哪？ —— 我要突破封锁 —— 初识SS —— 到处撺掇免费账号 —— WTF?这么不稳定 —— 咦，你有VPS啊，给我开个端口呗「=￣ω￣=卖萌」 —— 呃，一直用人家的端口好无耻啊，羞耻max —— DO我来了，搭搭搭 —— SS架好 —— 咦，有了VPS不撸个博客感觉对不起这5刀啊。域名买买买，选择了最私人化的.me。ldz2me ，柳德智to me 。&lt;/p&gt;
+&lt;p&gt;第一天，WTF？sfo 节点好渣啊，然后改成新加坡。/(ㄒoㄒ)/~~重新装lnmp，ss。一个Linux小白的入坑之旅。Blog方面依旧选择了众多coder青睐的Hexo，一切都在摸索中，一天感受就是ヾ(｡｀Д´｡) rsnyc部署你不是人啊，Windows这这这……急速逃离吧！！！&lt;/p&gt;
+&lt;p&gt;哈哈，吐了好多的槽点啊。&lt;/p&gt;
+&lt;p&gt;其实，建博客也是为了给自己一个奋斗下去的动力和鞭策。不让书再次吃灰，不让代码哭泣，不让swift被我辜负！！！&lt;/p&gt;
+&lt;p&gt;第一次，成就感max。&lt;/p&gt;
+&lt;p&gt;第一次搭VPS&lt;/p&gt;
+&lt;p&gt;第一次搞域名&lt;/p&gt;
+&lt;p&gt;第一次建站&lt;/p&gt;
+&lt;p&gt;第一次用Hexo&lt;/p&gt;
+&lt;p&gt;第一次用rsync&lt;/p&gt;
+&lt;p&gt;第一次用Markdown&lt;/p&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;p&gt;太多太多了……&lt;/p&gt;
+&lt;p&gt;生命不息，求知不止~&lt;/p&gt;
+&lt;p&gt;###完&lt;/p&gt;
+&lt;p&gt;Ps.太累了，有时间把之间遇到的问题mark一下。&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://www.ldz2.me/2016/03/21/%E3%80%8C%E6%89%93%E5%8D%A1%E3%80%8D/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>
