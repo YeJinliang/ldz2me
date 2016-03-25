@@ -1038,26 +1038,22 @@ code {
   }
   
 .btn-more {
-  -moz-box-shadow: -1px 1px 5px 0px #000000;
-  -webkit-box-shadow: -1px 1px 5px 0px #000000;
-  box-shadow: -1px 1px 5px 0px #000000;
+  -moz-box-shadow: -1px 1px 1px 0px #000000;
+  -webkit-box-shadow: -1px 1px 1px 0px #000000;
+  box-shadow: -1px 1px 1px 0px #000000;
   background-color:#ffffff;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
   border-radius: 1em;
-  border:1px solid #717582;
+  border:0.1px solid #717582;
   display:inline-block;
   cursor:pointer;
   color:#000000;
   font-family:Verdana;
   font-size: 1em;
-  padding: 0.1em 0.25em;
+  padding: 0.01em 0.25em;
   text-decoration:none;
   margin-left: 2em;
-  text-shadow:0px 1px 0px #4f5d80;
-}
-.btn-more:hover {
-  background-color:#9da39e;
 }
 .btn-more:active {
   position:relative;
