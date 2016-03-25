@@ -34,8 +34,6 @@ q:before, q:after {
   content: '';
   content: none; }
 
-
-
 body {
   width: 100%;
   *zoom: 1; }
@@ -1019,7 +1017,7 @@ ol {
 ul {
   list-style-type: disc; }
 
-code {
+/*code {
   padding: 2px 4px;
   background-color: #f8f8f8;
   color: #d14;
@@ -1027,8 +1025,17 @@ code {
   word-wrap: break-word;
   border-radius: 3px;
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  font-size: .85em; }
-
+  font-size: .85em; }*/
+code {
+    font-family:  Menlo, Monaco, Lucida Console,Consolas, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    background-color: #e3e3e3;
+    color: #666;
+    border-radius: 3px; // 也来个圆角
+    border-width: 1px;
+    border-color: #fff;
+    text-shadow: 0 1px #fff;
+    padding: 0.1em 0.3em; // 控制大小
+  }
 
 .date,
 .time,

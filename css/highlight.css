@@ -1,10 +1,10 @@
 .article-content pre,
 .article-content .highlight,
 .article-content .highlight pre {
-  background: #eee;
+  background: #2d2d2d;
   margin: 0.5em 0;
   padding: 0.5em 2%;
-  color: #4d4d4c;
+  color: #ccc;
   line-height: 1.2;
   font-size: 0.8em;
   -webkit-border-radius: 0.35em;
@@ -31,7 +31,7 @@
   }
 }
 .article-content pre {
-  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-family: Menlo, Monaco, Lucida Console, Consolas, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 }
 .article-content .highlight {
   overflow: auto;
@@ -49,6 +49,7 @@
 }
 .article-content .highlight table {
   margin: 0;
+  letter-spacing: 1px;
   width: auto;
 }
 .article-content .highlight td {
@@ -75,14 +76,14 @@
 }
 .article-content .gist {
   margin: 0.5em 0;
-  background: #eee;
+  background: #2d2d2d;
   padding: 1em 2%;
   -webkit-border-radius: 0.35em;
   border-radius: 0.35em;
 }
 .article-content .gist .gist-file {
   border: none;
-  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-family: Menlo, Monaco, Lucida Console, Consolas, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   margin: 0;
 }
 .article-content .gist .gist-file .gist-data {
@@ -101,10 +102,10 @@
   margin: 0;
   padding: 0;
   border: none;
-  background: #eee;
+  background: #2d2d2d;
 }
 .article-content .gist .gist-file .gist-meta {
-  background: #eee;
+  background: #2d2d2d;
   color: #8e908c;
   font: 0.85em font-serif;
   text-shadow: 0 0;
@@ -142,12 +143,12 @@ pre .built_in,
 pre .literal,
 pre .params,
 pre .constant {
-  color: #f5871f;
+  color: #f99157;
 }
 pre .class,
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #718c00;
+  color: #9c9;
 }
 pre .string,
 pre .value,
@@ -155,7 +156,7 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #718c00;
+  color: #9c9;
 }
 pre .css .hexcolor {
   color: #3e999f;
@@ -172,5 +173,5 @@ pre .coffeescript .title {
 }
 pre .keyword,
 pre .javascript .function {
-  color: #8959a8;
+  color: #c9c;
 }

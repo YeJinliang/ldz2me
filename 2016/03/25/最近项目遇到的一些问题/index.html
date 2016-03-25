@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      最近项目遇到的一些问题 | That&#39;s all to Me 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Liu Dezhi">
+    
+    
+
+    <meta name="description" content="1.「bug」Debug没问题 ，Release崩溃。之前版本打包的时候，测试一路畅通，打包到蒲公英一类众测各种闪退。苦逼！之后将Run 模式改为Release进行测试。发现每次崩在 application: didFinishLaunchingWithOptions: 方法里的 [self.window makeKeyAndVisible]; 。查询了很多资料也没有找到原因。最后发现，因为我们对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最近项目遇到的一些问题 | That's all to Me">
+<meta property="og:url" content="http://www.ldz2.me/2016/03/25/最近项目遇到的一些问题/index.html">
+<meta property="og:site_name" content="That's all to Me">
+<meta property="og:description" content="1.「bug」Debug没问题 ，Release崩溃。之前版本打包的时候，测试一路畅通，打包到蒲公英一类众测各种闪退。苦逼！之后将Run 模式改为Release进行测试。发现每次崩在 application: didFinishLaunchingWithOptions: 方法里的 [self.window makeKeyAndVisible]; 。查询了很多资料也没有找到原因。最后发现，因为我们对">
+<meta property="og:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageRun.png">
+<meta property="og:updated_time" content="2016-03-25T07:17:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最近项目遇到的一些问题 | That's all to Me">
+<meta name="twitter:description" content="1.「bug」Debug没问题 ，Release崩溃。之前版本打包的时候，测试一路畅通，打包到蒲公英一类众测各种闪退。苦逼！之后将Run 模式改为Release进行测试。发现每次崩在 application: didFinishLaunchingWithOptions: 方法里的 [self.window makeKeyAndVisible]; 。查询了很多资料也没有找到原因。最后发现，因为我们对">
+<meta name="twitter:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageRun.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for That&#39;s all to Me"><img src="/avatar.png" width="80" alt="That&#39;s all to Me logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">That&#39;s all to Me</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          哈喽 ~
+          <span id="hello">晚安</span>
+          ，这里是toMe，我是柳德智，一个iOS Coder，很高兴在这里遇见你，你在这里可以看到关于我的一切。希望这是一次能够让你感到相逢恨晚的初见。(⁎⁍̴̛ᴗ⁍̴̛⁎)‼ 
+          <script>     
+            var today = new Date();
+            var hour = today.getHours();
+            var  spanHello = document.getElementById("hello");
+            if (hour >= 4 && hour < 10) {
+              spanHello.innerText = "早安";
+           } else if (hour >= 17 && hour < 24 ) { 
+            spanHello.innerText = "晚安";
+
+          } else if (hour >= 10 && hour < 14 ) { 
+            spanHello.innerText = "午安";
+
+          } else if (hour >= 0 && hour < 4 ) { 
+            spanHello.innerText = "别熬夜了";
+
+          } else {
+            spanHello.innerText = "日安";
+
+          } 
+        </script>
+          <!-- 夜 -->
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <p class="panel-cover__description panel-subtitle">勿感于时，勿伤于怀</p>
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/category" title="" class="">分类</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    <!-- Font Awesome Icons-->
+    
+    
+      
+    <!-- Font Awesome Icons -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://github.com/YeJinliang" title="YeJinliang 的 GitHub" target="_blank">
+    <i class='social_fonts fa fa-github'></i>
+    <span class="label">GitHub</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="http://weibo.com/mogufeng" title="夜锦凉丶的微博" target="_blank">
+    <i class='social_fonts fa fa-weibo'></i>
+    <span class="label">Weibo</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="https://plus.google.com/101026874049567827395" title="YeJinliang 的 Google+" target="_blank">
+    <i class='social_fonts fa fa-google-plus'></i>
+    <span class="label">Google+</span>
+    </a>
+    </li>
+    
+    <!-- Twitter -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://twitter.com/YeJinliang" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-twitter'></i>
+    <span class="label">Twitter</span>
+    </a>
+    </li>
+
+    <li class="navigation__item navigation_social_item">
+    <a href="https://www.facebook.com/jinliang.ye.5" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-facebook'></i>
+    <span class="label">Facebook</span>
+    </a>
+    </li>
+
+    <!-- RSS -->
+    <li class="navigation__item navigation_social_item">
+    <a href="http://www.ldz2.me/rss2.xml" rel="author" title="RSS" target="_blank">
+    <i class='social_fonts fa fa-rss'></i>
+    <span class="label">RSS</span>
+    </a>
+    </li>
+    
+    <!-- Email -->
+    <li class="navigation__item navigation_social_item">
+    <a href="mailto:yjldeveloper@gmail.com" title="邮件联系我">
+    <i class='social_fonts fa fa-envelope'></i>
+    <span class="label">Email</span>
+    </a>
+    </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">最近项目遇到的一些问题</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-03-25" class="post-meta__date date">2016-03-25</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/bug/">bug</a>, <a class="tags-link" href="/tags/iOS/">iOS</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h4 id="1-「bug」Debug没问题-，Release崩溃。"><a href="#1-「bug」Debug没问题-，Release崩溃。" class="headerlink" title="1.「bug」Debug没问题 ，Release崩溃。"></a>1.「bug」Debug没问题 ，Release崩溃。</h4><p>之前版本打包的时候，测试一路畅通，打包到蒲公英一类众测各种闪退。苦逼！之后将Run 模式改为Release进行测试。<img src="http://7xs9gl.com1.z0.glb.clouddn.com/imageRun.png" alt="Run"><br>发现每次崩在 <code>application: didFinishLaunchingWithOptions:</code> 方法里的 <code>[self.window makeKeyAndVisible];</code> 。查询了很多资料也没有找到原因。最后发现，因为我们对<code>UIColor</code>进行了扩展，而在扩展的时候我们大哥为了炫技非要给我强行秀，写了个自动解析方法名然后根据方法名取不同色值的类方法，如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">UIColor</span> *)colorWithMethod:(SEL)method &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span> *me = [<span class="built_in">NSStringFromSelector</span>(method) UTF8String];</span><br><span class="line">  <span class="keyword">char</span> mee[<span class="number">7</span>];</span><br><span class="line">  strncpy(mee, me + <span class="number">2</span>, <span class="number">6</span>);</span><br><span class="line">  mee[<span class="number">6</span>] = <span class="string">'\0'</span>;</span><br><span class="line">  <span class="keyword">long</span> n = strtol(mee, <span class="literal">nil</span>, <span class="number">16</span>);</span><br><span class="line">  <span class="keyword">return</span> mRGBToColor(n);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Debug 很炫很爽，Release 吓哭了。估计是因为调用到了一些运行时方法，然后导致<code>[self.window makeKeyAndVisible]</code> Crash。 </p>
+<h4 id="2-「bug」iOS上传相机拍摄照片颠倒问题。"><a href="#2-「bug」iOS上传相机拍摄照片颠倒问题。" class="headerlink" title="2.「bug」iOS上传相机拍摄照片颠倒问题。"></a>2.「bug」iOS上传相机拍摄照片颠倒问题。</h4><p>当我们上传图片选择从相机获取时，会出现横幅拍摄上传后导致长宽失衡。原因是，我们没有将图片方向一并上传。对<code>UIImage</code>进行扩展，添加<code>fixOrientation</code>方法，针对不同方向情况进行判断旋转。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIImage</span> *)fixOrientation &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">self</span>.imageOrientation == <span class="built_in">UIImageOrientationUp</span>) <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">CGAffineTransform</span> transform = <span class="built_in">CGAffineTransformIdentity</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (<span class="keyword">self</span>.imageOrientation) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationDown</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationDownMirrored</span>:</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformTranslate</span>(transform, <span class="keyword">self</span>.size.width, <span class="keyword">self</span>.size.height);</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformRotate</span>(transform, M_PI);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationLeft</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationLeftMirrored</span>:</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformTranslate</span>(transform, <span class="keyword">self</span>.size.width, <span class="number">0</span>);</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformRotate</span>(transform, M_PI_2);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationRight</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationRightMirrored</span>:</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformTranslate</span>(transform, <span class="number">0</span>, <span class="keyword">self</span>.size.height);</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformRotate</span>(transform, -M_PI_2);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (<span class="keyword">self</span>.imageOrientation) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationUpMirrored</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationDownMirrored</span>:</span><br><span class="line">   	  transform = <span class="built_in">CGAffineTransformTranslate</span>(transform, <span class="keyword">self</span>.size.width, <span class="number">0</span>);</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformScale</span>(transform, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationLeftMirrored</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationRightMirrored</span>:</span><br><span class="line"> 	  transform = <span class="built_in">CGAffineTransformTranslate</span>(transform, <span class="keyword">self</span>.size.height, <span class="number">0</span>);</span><br><span class="line">	  transform = <span class="built_in">CGAffineTransformScale</span>(transform, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">CGContextRef</span> ctx = <span class="built_in">CGBitmapContextCreate</span>(<span class="literal">NULL</span>, <span class="keyword">self</span>.size.width, <span class="keyword">self</span>.size.height,<span class="built_in">CGImageGetBitsPerComponent</span>(<span class="keyword">self</span>.CGImage), <span class="number">0</span>,<span class="built_in">CGImageGetColorSpace</span>(<span class="keyword">self</span>.CGImage),<span class="built_in">CGImageGetBitmapInfo</span>(<span class="keyword">self</span>.CGImage));</span><br><span class="line">  <span class="built_in">CGContextConcatCTM</span>(ctx, transform);</span><br><span class="line">  <span class="keyword">switch</span> (<span class="keyword">self</span>.imageOrientation) &#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationLeft</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationLeftMirrored</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationRight</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="built_in">UIImageOrientationRightMirrored</span>:</span><br><span class="line">	  <span class="built_in">CGContextDrawImage</span>(ctx, <span class="built_in">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="keyword">self</span>.size.height,<span class="keyword">self</span>.size.width), <span class="keyword">self</span>.CGImage);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">	  <span class="built_in">CGContextDrawImage</span>(ctx, <span class="built_in">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="keyword">self</span>.size.width,<span class="keyword">self</span>.size.height), <span class="keyword">self</span>.CGImage);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">CGImageRef</span> cgimg = <span class="built_in">CGBitmapContextCreateImage</span>(ctx);</span><br><span class="line">  <span class="built_in">UIImage</span> *img = [<span class="built_in">UIImage</span> imageWith<span class="built_in">CGImage</span>:cgimg];</span><br><span class="line">  <span class="built_in">CGContextRelease</span>(ctx);</span><br><span class="line">  <span class="built_in">CGImageRelease</span>(cgimg);</span><br><span class="line">  <span class="keyword">return</span> img;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-「AppStore」IPA上传AppStore提示Missing……。"><a href="#3-「AppStore」IPA上传AppStore提示Missing……。" class="headerlink" title="3.「AppStore」IPA上传AppStore提示Missing……。"></a>3.「AppStore」IPA上传AppStore提示Missing……。</h4><p>项目上传打包时候，提示“Missing iOS Distribution signing identity for 你家公司”，查询后发现 “Apple Worldwide Developer Relations Certification Authority” 证书过期导致的错误。<br>解决：</p>
+<ul>
+<li>打开钥匙串</li>
+<li>显示-&gt;显示已过期的证书</li>
+<li>在‘登陆’和‘系统’中删除已过期的 “Apple Worldwide Developer Relations Certification Authority” 证书</li>
+<li>下载最新的<a href="https://developer.apple.com/certificationauthority/AppleWWDRCA.cer" target="_blank" rel="external">证书</a>，双击安装</li>
+</ul>
+<p><hr class="panel-cover__divider"><br>Ps,开发就是一场战斗，打队友，打对手，打PM，打小怪兽，战斗路上与君共勉。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/03/25/最近项目遇到的一些问题/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"ldz2me"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+
+    <span class="footer__copyright">感谢 <a href="https://m.do.co/c/a3d82319af9e">Digital Ocean</a> 为本站提供稳定的 VPS 服务，您可以在 GitHub 找到<a href="https://github.com/YeJinliang/ldz2me">本站源码</a></span>
+    <span class="footer__copyright">&copy; 2016-2017. | 本站由<a href="http://ldz2.me">@夜锦凉丶</a>创建，采用<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
