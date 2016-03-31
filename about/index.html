@@ -8,12 +8,8 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Favicons
-    ================================================== -->
-<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+<!-- js files -->
+<script src="<%- config.root %>js/jquery.min.js"></script>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -59,7 +55,21 @@
     </div>
   </div>
 </header>
+<div id="container" style="position:fixed; bottom:300px; right:10px; z-index:999;">
+  <img src="http://img5.imgtn.bdimg.com/it/u=2292555668,1147946895&fm=21&gp=0.jpg">
+  <div id="hidden" style="display:none;">
+    <img src="http://img1.imgtn.bdimg.com/it/u=3212931180,1043861377&fm=11&gp=0.jpg">
+  </div>
+</div>
 
+<script>
+  $('#container').hover(function(){
+    $('hidden').show();
+  },function(){
+    $('hidden').hide();
+  });
+  
+</script>
 <script type="text/javascript">
 var n=0;
 function title(){
