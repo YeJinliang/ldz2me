@@ -20,8 +20,29 @@
     ================================================== -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
-<style type="text/css">
-</style>
+        <style type="text/css">
+ a img{
+  position: absolute;
+  /*z-index: 1;
+  left: 300px;
+  top: 200px;
+  margin-right: 200px;
+  padding-right: 200px;*/
+  width: 200px;
+  height: 265px;
+  bottom: 50px;
+  left: 300px;
+  opacity: 0;
+  -webkit-transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  -moz-transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  -o-transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  -ms-transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
+  transition: left 0.4s ease-in-out, opacity 0.6s ease-in-out;
+}
+ a:hover img{
+  opacity: 1;
+}
+    </style>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -48,25 +69,15 @@
           <span style="float:left;padding-left:20px;">勿感于时，勿伤于怀。勿耽美色，勿沉虚妄。从今，进取！</span><br>
           <span style="float:left;padding-left:20px;">无愧于天，无愧于地。无怍于人，无惧于鬼。这样，人生！</span><br>
           <p>送给各位，与君共勉！</p>
-          <a href="" class="btn btn-default btn-lg page-scroll">Talk To Me
-          <div class="contain" style="display:none; position:absolute; left:5px; top:-100px; z-index:999;">
-          <img src="http://7xs9gl.com1.z0.glb.clouddn.com/WeChat.jpg" style=" display:block; width:100px; height:100px;">
+          <a href="" class="btn btn-default btn-lg page-scroll"><img src="http://7xs9gl.com1.z0.glb.clouddn.com/WeChat.jpg" alt="image01">Talk To Me</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ldz2.me" class="btn btn-default btn-lg page-scroll" target="_blank" rel="external">My Blog</a>
         </div>
-        </a>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://ldz2.me" class="btn btn-default btn-lg page-scroll" target="_blank" rel="external">My Blog</a></div>
       </div>
     </div>
   </div>
 </header>
 
-<script type="text/javascript" src="../js/jquery.min.js"></script> 
-<script>
-  $('.btn-lg').hover(function(){
-    $('.contain').show();
-    },function(){
-    $('.contain').hide();
-  });
-</script>
+
 <script type="text/javascript">
 var n=0;
 function title(){
