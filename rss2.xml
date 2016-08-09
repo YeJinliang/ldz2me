@@ -8,8 +8,32 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Fri, 13 May 2016 10:26:36 GMT</pubDate>
+    <pubDate>Tue, 09 Aug 2016 10:43:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>小Tips</title>
+      <link>http://www.ldz2.me/2016/08/09/%E5%B0%8FTips/</link>
+      <guid>http://www.ldz2.me/2016/08/09/%E5%B0%8FTips/</guid>
+      <pubDate>Tue, 09 Aug 2016 10:28:17 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;从6月份换了工作之后，一直犯懒，懒得学习，懒得记录，懒得维护。知识唯有经常检视，才会更加牢固。&lt;br&gt;新项目无法避免遇到一堆问题，我都成了Google 之后就完了。搞得现在连&lt;code&gt;Markdown&lt;/code&gt;的语法都忘得七七八八了。把这些问题记下来，省的以后想不起来
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;从6月份换了工作之后，一直犯懒，懒得学习，懒得记录，懒得维护。知识唯有经常检视，才会更加牢固。&lt;br&gt;新项目无法避免遇到一堆问题，我都成了Google 之后就完了。搞得现在连&lt;code&gt;Markdown&lt;/code&gt;的语法都忘得七七八八了。把这些问题记下来，省的以后想不起来要继续Google。&lt;/p&gt;
+&lt;p&gt;1.解决&lt;code&gt;POST git-receive-pack (chunked)&lt;/code&gt;问题&lt;br&gt;在使用SourceTree上传资料的时候,遇到&lt;br&gt;&lt;code&gt;POST git-receive-pack (chunked)&lt;/code&gt;&lt;br&gt;看到这样一则&lt;/p&gt;
+&lt;p&gt;This is a bug in Git; when using HTTPS it will use chunked encoding for uploads above a certain size. Those do not work.&lt;br&gt;A trivial fix is to tell git to not chunk until some ridiculously large size value, such as:&lt;br&gt;git config http.postBuffer 524288000 .&lt;/p&gt;
+&lt;p&gt;于是尝试在 &lt;code&gt;.git/config&lt;/code&gt; 加入&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[http] &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    postBuffer = 524288000 &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;因为上传文件过大，所以在config中提高文件大小上限。&lt;/p&gt;
+&lt;p&gt;2.根据字典的某一个Vlaue值进行排序&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; * dataDic = (&lt;span class=&quot;built_in&quot;&gt;NSDictionary&lt;/span&gt; *)responseObject;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; * valueArr = [dataDic allValues];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; * sortArr = [&lt;span class=&quot;built_in&quot;&gt;NSMutableArray&lt;/span&gt; arrayWithArray:valueArr];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; * sortDescriptors = [&lt;span class=&quot;built_in&quot;&gt;NSArray&lt;/span&gt; arrayWithObject:[&lt;span class=&quot;built_in&quot;&gt;NSSortDescriptor&lt;/span&gt; sortDescriptorWithKey:&lt;span class=&quot;string&quot;&gt;@&quot;publish_time&quot;&lt;/span&gt; ascending:&lt;span class=&quot;literal&quot;&gt;NO&lt;/span&gt;]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[sortArr sortUsingDescriptors:sortDescriptors];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;3.动态库一定一定要加到 &lt;code&gt;Project -&amp;gt; General -&amp;gt; Embedded binaries&lt;/code&gt;里面，否则崩溃，报 &lt;strong&gt;Library not loaded: ‘Image not found’&lt;/strong&gt; 错误。&lt;/p&gt;
+&lt;p&gt;4.CocoaPods 对第三方库的修改。&lt;br&gt;pod search ‘thirdSepc’ 找到对应的git 路径，fork 。然后拉取到本地，进行更改，push。修改podsepc文件，将s.source 改为自己的git仓库。Podfile里改为&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;pod &lt;span class=&quot;string&quot;&gt;&#39;thirdSepc&#39;&lt;/span&gt;, :&lt;span class=&quot;built_in&quot;&gt;git&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&#39;https://github.com/yourname/thirdSepc.git&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://www.ldz2.me/2016/08/09/%E5%B0%8FTips/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>蓝色星球的最后一方净土</title>
