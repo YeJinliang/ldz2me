@@ -8,8 +8,47 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 09 Aug 2016 10:43:38 GMT</pubDate>
+    <pubDate>Wed, 10 Aug 2016 10:29:28 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>iOS git 忽略文件</title>
+      <link>http://www.ldz2.me/2016/08/10/iOS-git-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</link>
+      <guid>http://www.ldz2.me/2016/08/10/iOS-git-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/</guid>
+      <pubDate>Wed, 10 Aug 2016 10:26:16 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;iOS git 使用 SourceTree 忽略不必要文件，有需要的朋友可以参考下。&lt;br&gt;在 iOS 开发中，会有一些不需要提交到 git 上的文件，如：UserInterfaceState.xcuserstate 这类的文件。&lt;br&gt;如果当前git服务器中没有这个Use
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;iOS git 使用 SourceTree 忽略不必要文件，有需要的朋友可以参考下。&lt;br&gt;在 iOS 开发中，会有一些不需要提交到 git 上的文件，如：UserInterfaceState.xcuserstate 这类的文件。&lt;br&gt;如果当前git服务器中没有这个UserInterfaceState.xcuserstate文件，我们可以直接在sourcetree中指向这个文件－－右键－－ignore。如果当前这个文件已经存在服务器中，我们需要先删除在git服务器中的该文件，然后再忽略。&lt;/p&gt;
+&lt;p&gt;1.删除仓库中跟踪的UserInterfaceState.xcuserstate &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;git&lt;/span&gt; rm --cached /Users/YeJinliang/Desktop/fang88_ios/Fang88.xcworkspace/xcuserdata/YeJinliang.xcuserdatad/UserInterfaceState.xcuserstate&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;string&quot;&gt;&quot;Removed file that shouldn&#39;t be tracked&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;git&lt;/span&gt; push&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.忽略UserInterfaceState.xcuserstate，在仓库根目录下： &lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;vim ./.git/info/exclude &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;然后按“i”进入编辑模式，将UserInterfaceState.xcuserstate追加到文件末尾，注意要填写项目相对路径&lt;br&gt;也可以再sourcetree中指向这个文件－－右键－－ignore。&lt;br&gt;问题解决~&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://www.ldz2.me/2016/08/10/iOS-git-%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>iOS App 国际化</title>
+      <link>http://www.ldz2.me/2016/08/09/iOS-App-%E5%9B%BD%E9%99%85%E5%8C%96/</link>
+      <guid>http://www.ldz2.me/2016/08/09/iOS-App-%E5%9B%BD%E9%99%85%E5%8C%96/</guid>
+      <pubDate>Tue, 09 Aug 2016 10:55:19 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;新接手的项目&lt;a href=&quot;https://itunes.apple.com/app/id1092878105&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Fang88&lt;/a&gt;已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;新接手的项目&lt;a href=&quot;https://itunes.apple.com/app/id1092878105&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Fang88&lt;/a&gt;已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。&lt;br&gt;未完…&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://www.ldz2.me/2016/08/09/iOS-App-%E5%9B%BD%E9%99%85%E5%8C%96/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>小Tips</title>
