@@ -16,16 +16,31 @@
     
     
 
-    <meta name="description" content="新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。未完…">
+    <meta name="description" content="1.缘由新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。
+2.作死的开始iOS 项目的国际化分为两种情况：
+
+1.开发开始决定做国际化。2.开发到一半决定这版本就要上国际化。
+
+俗话说：you can you bb，no can no up。… 是这句：no zuo no die，why you try。所以，我们这里针对的就是第二种情况，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS App 国际化 | That's all to Me">
 <meta property="og:url" content="http://www.ldz2.me/2016/08/09/iOS-App-国际化/index.html">
 <meta property="og:site_name" content="That's all to Me">
-<meta property="og:description" content="新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。未完…">
-<meta property="og:updated_time" content="2016-08-10T10:24:02.000Z">
+<meta property="og:description" content="1.缘由新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。
+2.作死的开始iOS 项目的国际化分为两种情况：
+
+1.开发开始决定做国际化。2.开发到一半决定这版本就要上国际化。
+
+俗话说：you can you bb，no can no up。… 是这句：no zuo no die，why you try。所以，我们这里针对的就是第二种情况，">
+<meta property="og:updated_time" content="2016-08-11T07:33:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS App 国际化 | That's all to Me">
-<meta name="twitter:description" content="新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。未完…">
+<meta name="twitter:description" content="1.缘由新接手的项目Fang88已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。
+2.作死的开始iOS 项目的国际化分为两种情况：
+
+1.开发开始决定做国际化。2.开发到一半决定这版本就要上国际化。
+
+俗话说：you can you bb，no can no up。… 是这句：no zuo no die，why you try。所以，我们这里针对的就是第二种情况，">
     
     
     
@@ -283,7 +298,15 @@ classes that you can use:
   </header>
 
   <section id="post-content" class="article-content post">
-    <p>新接手的项目<a href="https://itunes.apple.com/app/id1092878105" target="_blank" rel="external">Fang88</a>已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。<br>未完…</p>
+    <h3 id="1-缘由"><a href="#1-缘由" class="headerlink" title="1.缘由"></a>1.缘由</h3><p>新接手的项目<a href="https://itunes.apple.com/app/id1092878105" target="_blank" rel="external">Fang88</a>已经上线，这次的项目是做美国房地产面向国内销售的。所以，App 的国际化是必须的。</p>
+<h3 id="2-作死的开始"><a href="#2-作死的开始" class="headerlink" title="2.作死的开始"></a>2.作死的开始</h3><p>iOS 项目的国际化分为两种情况：</p>
+<blockquote>
+<p>1.开发开始决定做国际化。<br>2.<strong>开发到一半决定这版本就要上国际化。</strong></p>
+</blockquote>
+<p>俗话说：<del>you can you bb，no can no up。</del>… 是这句：no zuo no die，why you try。所以，我们这里针对的就是第二种情况，开发即将结束，要求上国际化功能。</p>
+<h3 id="3-追随系统的国际化"><a href="#3-追随系统的国际化" class="headerlink" title="3.追随系统的国际化"></a>3.追随系统的国际化</h3><p>国际化的初步，网上有很多资料，我就不详谈了。我们使用NSLocalized宏对要适配的字符串进行国际化适配。<br>eg.<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">NSLocalizedString</span>(<span class="string">@"Hello World"</span>, <span class="string">@"description for Hello World."</span>);</span><br></pre></td></tr></table></figure><br>进入NSLocalizedString宏定义文件，我们可以看到四个相关国际化的宏。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#define NSLocalizedString(key, comment) \</span></span><br><span class="line">        [[<span class="built_in">NSBundle</span> mainBundle] localizedStringForKey:(key) value:<span class="string">@""</span> table:<span class="literal">nil</span>]</span><br><span class="line"><span class="meta">#define NSLocalizedStringFromTable(key, tbl, comment) \</span></span><br><span class="line">        [[<span class="built_in">NSBundle</span> mainBundle] localizedStringForKey:(key) value:<span class="string">@""</span> table:(tbl)]</span><br><span class="line"><span class="meta">#define NSLocalizedStringFromTableInBundle(key, tbl, bundle, comment) \</span></span><br><span class="line">        [bundle localizedStringForKey:(key) value:<span class="string">@""</span> table:(tbl)]</span><br><span class="line"><span class="meta">#define NSLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment) \</span></span><br><span class="line">        [bundle localizedStringForKey:(key) value:(val) table:(tbl)]</span><br></pre></td></tr></table></figure>
+<p><code>NSLocalizedString(key, comment)</code><br>NSLocalizedString其实是从mainBundle中默认读取了Localizable.string中的key所对应的value。comment参数则是对key的描述，有利于翻译人员理解这个key所适用的场景。<br><code>NSLocalizedStringFromTable(key, tbl, comment)</code><br>NSLocalizedStringFromTable则是从mainBundle中读取指定多语言文件中的key所对应的value。tbl参数就是用于指定多语言文件名的参数。<br><code>NSLocalizedStringFromTableInBundle(key, tbl, bundle, comment)</code><br>NSLocalizedStringFromTableInBundle会读取指定Bundle中所指定的多语言文件中的key所对应的value。bundle参数就是用于传入所指定的Bundle。<br><code>NSLocalizedStringWithDefaultValue(key, tbl, bundle, val, comment)</code><br>NSLocalizedStringWithDefaultValue则是从指定Bundle中读取指定多语言文件中的key所对应的value，如果取不到对应的value，允许指定一个默认的value。val参数就是用于传入默认的value值。<br>未完…</p>
 
   </section>
 
