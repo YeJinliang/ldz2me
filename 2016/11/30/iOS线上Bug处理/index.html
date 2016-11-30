@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      iOS线上Bug处理 | That&#39;s all to Me 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Liu Dezhi">
+    
+    
+
+    <meta name="description" content="基于Umeng统计的线上错误分析1）背景一个应用在开发过程中，由于各种不可抗力程序猿心情不好的影响，总会出现这样那样的bug。开发过程中发现的bug，比较容易发现根源并且进行纠正。而当应用上线之后，大用户群体的涌入，多使用环境的影响，一些我们测试时无法发现的bug会发生。这种情况下，无法复现的bug的解决极其困难。我们接入第三方错误收集后，能够精确定位崩溃代码。
+2）错误数据解析以友盟为例，友盟的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS线上Bug处理 | That's all to Me">
+<meta property="og:url" content="http://www.ldz2.me/2016/11/30/iOS线上Bug处理/index.html">
+<meta property="og:site_name" content="That's all to Me">
+<meta property="og:description" content="基于Umeng统计的线上错误分析1）背景一个应用在开发过程中，由于各种不可抗力程序猿心情不好的影响，总会出现这样那样的bug。开发过程中发现的bug，比较容易发现根源并且进行纠正。而当应用上线之后，大用户群体的涌入，多使用环境的影响，一些我们测试时无法发现的bug会发生。这种情况下，无法复现的bug的解决极其困难。我们接入第三方错误收集后，能够精确定位崩溃代码。
+2）错误数据解析以友盟为例，友盟的">
+<meta property="og:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageUMcuowu.png">
+<meta property="og:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageUMbash.png">
+<meta property="og:updated_time" content="2016-11-30T08:02:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS线上Bug处理 | That's all to Me">
+<meta name="twitter:description" content="基于Umeng统计的线上错误分析1）背景一个应用在开发过程中，由于各种不可抗力程序猿心情不好的影响，总会出现这样那样的bug。开发过程中发现的bug，比较容易发现根源并且进行纠正。而当应用上线之后，大用户群体的涌入，多使用环境的影响，一些我们测试时无法发现的bug会发生。这种情况下，无法复现的bug的解决极其困难。我们接入第三方错误收集后，能够精确定位崩溃代码。
+2）错误数据解析以友盟为例，友盟的">
+<meta name="twitter:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageUMcuowu.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for That&#39;s all to Me"><img src="/avatar.png" width="80" alt="That&#39;s all to Me logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">That&#39;s all to Me</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          哈喽 ~
+          <span id="hello">晚安</span>
+          ，这里是toMe，我是柳德智，一个iOS Coder，很高兴在这里遇见你，你在这里可以看到关于我的一切。希望这是一次能够让你感到相逢恨晚的初见。(⁎⁍̴̛ᴗ⁍̴̛⁎)‼ 
+          <script>     
+            var today = new Date();
+            var hour = today.getHours();
+            var  spanHello = document.getElementById("hello");
+            if (hour >= 4 && hour < 10) {
+              spanHello.innerText = "早安";
+           } else if (hour >= 17 && hour < 24 ) { 
+            spanHello.innerText = "晚安";
+
+          } else if (hour >= 10 && hour < 14 ) { 
+            spanHello.innerText = "午安";
+
+          } else if (hour >= 0 && hour < 4 ) { 
+            spanHello.innerText = "别熬夜了";
+
+          } else {
+            spanHello.innerText = "日安";
+
+          } 
+        </script>
+          <!-- 夜 -->
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <p class="panel-cover__description panel-subtitle">勿感于时，勿伤于怀</p>
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/category" title="" class="">分类</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    <!-- Font Awesome Icons-->
+    
+    
+      
+    <!-- Font Awesome Icons -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://github.com/YeJinliang" title="YeJinliang 的 GitHub" target="_blank">
+    <i class='social_fonts fa fa-github'></i>
+    <span class="label">GitHub</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="http://weibo.com/mogufeng" title="夜锦凉丶的微博" target="_blank">
+    <i class='social_fonts fa fa-weibo'></i>
+    <span class="label">Weibo</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="https://plus.google.com/101026874049567827395" title="YeJinliang 的 Google+" target="_blank">
+    <i class='social_fonts fa fa-google-plus'></i>
+    <span class="label">Google+</span>
+    </a>
+    </li>
+    
+    <!-- Twitter -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://twitter.com/YeJinliang" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-twitter'></i>
+    <span class="label">Twitter</span>
+    </a>
+    </li>
+
+    <li class="navigation__item navigation_social_item">
+    <a href="https://www.facebook.com/jinliang.ye.5" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-facebook'></i>
+    <span class="label">Facebook</span>
+    </a>
+    </li>
+
+    <!-- RSS -->
+    <li class="navigation__item navigation_social_item">
+    <a href="http://www.ldz2.me/rss2.xml" rel="author" title="RSS" target="_blank">
+    <i class='social_fonts fa fa-rss'></i>
+    <span class="label">RSS</span>
+    </a>
+    </li>
+    
+    <!-- Email -->
+    <li class="navigation__item navigation_social_item">
+    <a href="mailto:yjldeveloper@gmail.com" title="邮件联系我">
+    <i class='social_fonts fa fa-envelope'></i>
+    <span class="label">Email</span>
+    </a>
+    </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">iOS线上Bug处理</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-11-30" class="post-meta__date date">2016-11-30</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Development/">Development</a>, <a class="tags-link" href="/tags/bug/">bug</a>, <a class="tags-link" href="/tags/iOS/">iOS</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="基于Umeng统计的线上错误分析"><a href="#基于Umeng统计的线上错误分析" class="headerlink" title="基于Umeng统计的线上错误分析"></a>基于Umeng统计的线上错误分析</h3><h4 id="1）背景"><a href="#1）背景" class="headerlink" title="1）背景"></a>1）背景</h4><p>一个应用在开发过程中，由于各种不可抗力<del>程序猿心情不好</del>的影响，总会出现这样那样的bug。开发过程中发现的bug，比较容易发现根源并且进行纠正。而当应用上线之后，大用户群体的涌入，多使用环境的影响，一些我们测试时无法发现的bug会发生。这种情况下，无法复现的bug的解决极其困难。我们接入第三方错误收集后，能够精确定位崩溃代码。</p>
+<h4 id="2）错误数据解析"><a href="#2）错误数据解析" class="headerlink" title="2）错误数据解析"></a>2）错误数据解析</h4><p>以友盟为例，友盟的错误收集，我们可以登录管理后台查看错误详情。<br>以下图某次crash的详情为例。<br><img src="http://7xs9gl.com1.z0.glb.clouddn.com/imageUMcuowu.png" alt=""><br>我们可以看到，友盟给我展示出的：1.错误类型、2.错误发生版本的UUID、3.错误的内存地址。<br>下面我们对这个错误进行解析。</p>
+<h5 id="1-首先进入Xcode的Archives文件夹找到对应的xcarchive。"><a href="#1-首先进入Xcode的Archives文件夹找到对应的xcarchive。" class="headerlink" title="1.首先进入Xcode的Archives文件夹找到对应的xcarchive。"></a>1.首先进入<code>Xcode</code>的<code>Archives</code>文件夹找到对应的xcarchive。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Library/Developer/Xcode/Archives/</span><br></pre></td></tr></table></figure>
+<h5 id="2-进入dSYMs文件夹查看对应符号文件的UUID。和崩溃日志的UUID比对。"><a href="#2-进入dSYMs文件夹查看对应符号文件的UUID。和崩溃日志的UUID比对。" class="headerlink" title="2.进入dSYMs文件夹查看对应符号文件的UUID。和崩溃日志的UUID比对。"></a>2.进入<code>dSYMs</code>文件夹查看对应符号文件的UUID。和崩溃日志的UUID比对。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> dSYMs/</span><br><span class="line">dwarfdump --uuid Fang88.app.dSYM </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UUID: 4335B5D7-AA31-3DB6-A923-01E0C9607C24 (armv7) Fang88.app.dSYM/Contents/Resources/DWARF/Fang88</span><br><span class="line">UUID: A36D8995-B8C4-3B74-A58C-8B5B38E16208 (arm64) Fang88.app.dSYM/Contents/Resources/DWARF/Fang88</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dSYM UUID: A36D8995-B8C4-3B74-A58C-8B5B38E16208</span><br><span class="line">CPU Type: arm64</span><br><span class="line">Slide Address: 0x0000000100000000</span><br><span class="line">Binary Image: Fang88</span><br><span class="line">Base Address: 0x0000000100084000</span><br></pre></td></tr></table></figure>
+<h5 id="3-得到一致的UUID，对错误发生内存地址进行解析。"><a href="#3-得到一致的UUID，对错误发生内存地址进行解析。" class="headerlink" title="3.得到一致的UUID，对错误发生内存地址进行解析。"></a>3.得到一致的UUID，对错误发生内存地址进行解析。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dwarfdump --arch=arm64 --lookup 0x100115508 /Users/YeJinliang/Library/Developer/Xcode/Archives/2016-10-14/Fang88 2016-10-14 下午7.11.xcarchive/dSYMs/Fang88.app.dSYM/Contents/Resources/DWARF/Fang88</span><br></pre></td></tr></table></figure>
+<p>Ps.空格切记转义。</p>
+<h5 id="4-由此我们得到返回数据。"><a href="#4-由此我们得到返回数据。" class="headerlink" title="4.由此我们得到返回数据。"></a>4.由此我们得到返回数据。</h5><p>可以看到崩溃内存地址对应文件方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------------------------</span><br><span class="line"> File: /Users/YeJinliang/Library/Developer/Xcode/Archives/2016-10-14/Fang88 2016-10-14 下午7.11.xcarchive//dSYMs/Fang88.app.dSYM/Contents/Resources/DWARF/Fang88 (arm64)</span><br><span class="line">----------------------------------------------------------------------</span><br><span class="line">Looking up address: 0x0000000100115508 <span class="keyword">in</span> .debug_info... found!</span><br><span class="line"></span><br><span class="line">0x00100e9e: Compile Unit: length = 0x00001395  version = 0x0002  abbr_offset = 0x00000000  addr_size = 0x08  (next CU at 0x00102237)</span><br><span class="line"></span><br><span class="line">0x00100ea9: TAG_compile_unit [106] *</span><br><span class="line">             AT_producer( <span class="string">"Apple LLVM version 8.0.0 (clang-800.0.38)"</span> )</span><br><span class="line">             AT_language( DW_LANG_ObjC )</span><br><span class="line">             AT_name( <span class="string">"Fang88/FangService/Request/FRequestManager.m"</span> )</span><br><span class="line">             AT_stmt_list( 0x00068ee7 )</span><br><span class="line">             AT_comp_dir( <span class="string">"/Users/YeJinliang/Desktop/fang88_ios"</span> )</span><br><span class="line">             AT_APPLE_optimized( 0x01 )</span><br><span class="line">             AT_APPLE_major_runtime_vers( 0x02 )</span><br><span class="line">             AT_low_pc( 0x0000000100114830 )</span><br><span class="line">             AT_high_pc( 0x0000000100115990 )</span><br><span class="line"></span><br><span class="line">0x0010176d:     TAG_subprogram [125] *</span><br><span class="line">                 AT_low_pc( 0x0000000100115454 )</span><br><span class="line">                 AT_high_pc( 0x0000000100115524 )</span><br><span class="line">                 AT_frame_base( reg29 )</span><br><span class="line">                 AT_name( <span class="string">"__101+[FRequestManager requestMethod:urlString:parameters:timeoutInterval:cache:cacheKey:success:failure:]_block_invoke_2.72"</span> )</span><br><span class="line">                 AT_decl_file( <span class="string">"/Users/YeJinliang/Desktop/fang88_ios/Fang88/FangService/Request/FRequestManager.m"</span> )</span><br><span class="line">                 AT_decl_line( 153 )</span><br><span class="line">                 AT_prototyped( 0x01 )</span><br><span class="line">                 AT_APPLE_optimized( 0x01 )</span><br><span class="line">Line table dir : <span class="string">'/Users/YeJinliang/Desktop/fang88_ios/Fang88/FangService/Request'</span></span><br><span class="line">Line table file: <span class="string">'FRequestManager.m'</span> line 158, column 17 with start address 0x00000001001154f4</span><br><span class="line"></span><br><span class="line">Looking up address: 0x0000000100115508 <span class="keyword">in</span> .debug_frame... not found.</span><br></pre></td></tr></table></figure><br>根据<code>AT_name</code>、<code>AT_decl_file</code>和<code>AT_decl_line</code>去对应版本源代码中查找bug。或者根据<code>Line table file</code>同理。</p>
+<h4 id="3）捷径"><a href="#3）捷径" class="headerlink" title="3）捷径"></a>3）捷径</h4><p>在这样找了很久bug之后，我发现友盟早就给我们准备好了bash的代码！！！坑爹啊。<br><img src="http://7xs9gl.com1.z0.glb.clouddn.com/imageUMbash.png" alt=""><br>点击错误内存地址之后会展示出来的bash代码。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> dSYMPath=<span class="string">"<span class="variable">$(find ~/Library/Developer/Xcode -iname '*.dSYM' -print0 | xargs -0 dwarfdump -u  | grep 494CC1E3-457F-3A07-8D12-F0C3CE627F2B | sed -E 's/^[^/]+//' | head -n 1)</span>"</span>;dwarfdump --arch=arm64 --lookup 0x10001f108 <span class="string">"<span class="variable">$dSYMPath</span>"</span></span><br></pre></td></tr></table></figure><br>之后的错误处理和之前相同。</p>
+<h3 id="最后，祝大家bug越来越少…"><a href="#最后，祝大家bug越来越少…" class="headerlink" title="最后，祝大家bug越来越少…"></a>最后，祝大家bug越来越少…</h3>
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/11/30/iOS线上Bug处理/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"ldz2me"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+
+    <span class="footer__copyright">感谢 <a href="https://m.do.co/c/a3d82319af9e">Digital Ocean</a> 为本站提供稳定的 VPS 服务，您可以在 GitHub 找到<a href="https://github.com/YeJinliang/ldz2me">本站源码</a></span>
+    <span class="footer__copyright">&copy; 2016-2017. | 本站由<a href="http://ldz2.me">@夜锦凉丶</a>创建，采用<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
