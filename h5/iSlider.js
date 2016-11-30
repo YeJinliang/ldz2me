@@ -158,7 +158,73 @@ iSlider.prototype={
         this._tpl = this.wrap.cloneNode(true);
         this._tpl = this.opts.item ? this._tpl.querySelectorAll(this.opts.item) : this._tpl.children;
 
-        for (var i=0; i<this._tpl.length; i++)="" {="" this._tpl[i].style.csstext+="display:block;position:absolute;left:0;top:0;width:100%;height:100%" };="" this.length="this._tpl.length;" 总页数数据="" this.touchinitpos="0;//手指初始位置" this.startpos="0;//移动开始的位置" this.totaldist="0,//移动的总距离" this.deltax1="0;//每次移动的正负" this.deltax2="0;//每次移动的正负" 全屏滑动="" 设置样式="" if="" (this.opts.fullscr)="" var="" s="document.createElement('style');" s.innerhtml="html,body{width:100%;height:100%;overflow:hidden}" ;="" document.head.appendchild(s);="" }="" this.wrap.style.csstext+="display:block;position:relative;" +(this.opts.fullscr="" ?="" 'width:100%;height:100%':'');="" 必须要在前面的布局都设置好后="" 再来获取尺寸="" this.displaywidth="this.wrap.clientWidth;" 滑动区域最大宽度="" this.displayheight="this.wrap.clientHeight;" 滑动区域最大高度="" this.scrolldist="this.opts.isVertical" :="" this.displaywidth;="" 滚动的区域尺寸="" this._sethtml();="" 填充初始dom="" (this.opts.loadingimgs="" &&="" this.opts.loadingimgs.length)="" this._loading();="" }else="" this._pageinit();="" (="" iphone|ipod|ipad="" .test(navigator.useragent))="" this._delaytime="50;" this._bindevt();="" },="" _bindevt:function="" ()="" self="this;" handlrelm="this.opts.fullScr" this.$('body')="" this.wrap;="" handlrelm.addeventlistener('touchstart',function="" (e)="" self._touchstart(e);="" },false);="" handlrelm.addeventlistener('touchmove',function="" self._touchmove(e);="" (!self.opts.fullscr)="" 修复手q中局部使用时的一个bug="" e.stoppropagation();="" e.preventdefault();="" handlrelm.addeventlistener('touchend',function="" self._touchend(e);="" handlrelm.addeventlistener('touchcancel',function="" (this.opts.fullscr="" ||="" this.opts.preventmove)="" handlrelm.addeventlistener('touchmove',="" function="" false);="" _sethtml:function="" (index)="" (index="">=0) {
+        for (var i=0; i<this._tpl.length; i++) {
+            this._tpl[i].style.cssText+='display:block;position:absolute;left:0;top:0;width:100%;height:100%'
+        };
+
+        this.length=this._tpl.length; //总页数数据
+        this.touchInitPos = 0;//手指初始位置
+        this.startPos = 0;//移动开始的位置
+        this.totalDist = 0,//移动的总距离
+        this.deltaX1 = 0;//每次移动的正负
+        this.deltaX2 = 0;//每次移动的正负
+        
+        //全屏滑动 设置样式
+        if (this.opts.fullScr) {
+            var s = document.createElement('style');
+            s.innerHTML = 'html,body{width:100%;height:100%;overflow:hidden}';
+            document.head.appendChild(s);
+            s = null;
+        }
+
+        this.wrap.style.cssText+="display:block;position:relative;"+(this.opts.fullScr ? 'width:100%;height:100%':'');
+        
+        //必须要在前面的布局都设置好后 再来获取尺寸
+        this.displayWidth = this.wrap.clientWidth; //滑动区域最大宽度
+        this.displayHeight = this.wrap.clientHeight; //滑动区域最大高度
+
+        this.scrollDist=this.opts.isVertical ? this.displayHeight : this.displayWidth;//滚动的区域尺寸 
+
+        this._setHTML();// 填充初始DOM
+
+        if (this.opts.loadingImgs && this.opts.loadingImgs.length) {
+            this._loading();
+        }else {
+            this._pageInit();
+        }
+
+        if (/iPhone|iPod|iPad/.test(navigator.userAgent)) {
+            this._delayTime=50;
+        }
+
+        this._bindEvt();
+	},
+    _bindEvt:function () {
+        var self = this;
+        var handlrElm= this.opts.fullScr ? this.$('body') : this.wrap;
+        handlrElm.addEventListener('touchstart',function (e) {
+            self._touchstart(e);
+        },false);
+        handlrElm.addEventListener('touchmove',function (e) {
+            self._touchmove(e);
+            if (!self.opts.fullScr) { //修复手Q中局部使用时的一个bug
+                e.stopPropagation();
+                e.preventDefault();
+            }
+        },false);
+        handlrElm.addEventListener('touchend',function (e) {
+            self._touchend(e);
+        },false);
+        handlrElm.addEventListener('touchcancel',function (e) {
+            self._touchend(e);
+        },false);
+
+        if (this.opts.fullScr || this.opts.preventMove) {
+            handlrElm.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+        }
+    },
+    _setHTML:function (index) {
+        if (index>=0) {
             this.index=parseInt(index);
         }
         this.wrap.innerHTML='';
@@ -177,10 +243,79 @@ iSlider.prototype={
         this._current.style.cssText+=this._getTransform(0);
         initDom.appendChild(this._current);
         
-        if (this.index<this.length-1) 1="" {="" this._next="this._tpl[this.index+1].cloneNode(true);" this._next.style.csstext+="this._getTransform(this.scrollDist+'px');" initdom.appendchild(this._next)="" }else="" }="" this.wrap.appendchild(initdom);="" },="" _pageinit:function="" ()="" var="" self="this;" settimeout(function="" self.addclass(self._current,self.opts.playclass);="" try="" self.opts.onslide.call(self,self.index);="" catch="" (e)="" console.info(e)="" },this._delaytime);="" _touchstart="" :="" function="" if(e.touches.length="" !="=" 1){return;}="" 如果大于1个手指，则不处理="" this.lockslide="false;" this._touchstartx="e.touches[0].pageX;" this._touchstarty="e.touches[0].pageY;" this.touchinitpos="this.opts.isVertical" ?="" e.touches[0].pagey:e.touches[0].pagex;="" 每次move的触点位置="" this.deltax1="this.touchInitPos;//touchstart的时候的原始位置" this.startpos="0;" this.startposprev="-this.scrollDist;" this.startposnext="this.scrollDist;" 手指滑动的时候禁用掉动画="" if="" (this._next)="" self._next.style.csstext+="-webkit-transition-duration:0;" self._current.style.csstext+="-webkit-transition-duration:0;" (this._prev)="" self._prev.style.csstext+="-webkit-transition-duration:0;" _touchmove="" parent="e.target;" do="" while="" (parent="" &&="" parent!="this.wrap);" (!parent="" e.target!="this.wrap" )="" return="" ;="" ||="" this.lockslide){return;}="" gx="Math.abs(e.touches[0].pageX" -="" this._touchstartx);="" gy="Math.abs(e.touches[0].pageY" this._touchstarty);="" 如果手指初始滑动的方向跟页面设置的方向不一致="" 就不会触发滑动="" 这个主要是避免误操作,="" 比如页面是垂直滑动,="" 在某一页加了横向滑动的局部动画,="" 那么左右滑动的时候要保证页面不能上下移动.="" 这里就是做这个的.="" (gx="">gy && this.opts.isVertical) { //水平滑动
+        if (this.index<this.length-1) {
+            this._next=this._tpl[this.index+1].cloneNode(true);
+            this._next.style.cssText+=this._getTransform(this.scrollDist+'px');
+            initDom.appendChild(this._next)
+        }else {
+            this._next=null;
+        }
+
+        this.wrap.appendChild(initDom);
+
+    },
+    _pageInit:function () {
+        var self = this;
+        setTimeout(function () {
+            self.addClass(self._current,self.opts.playClass);
+
+            try {
+                self.opts.onslide.call(self,self.index);
+            } catch (e) {
+//                console.info(e)
+            }
+        },this._delayTime);
+    },
+	_touchstart : function (e) {
+        var self=this;
+		if(e.touches.length !== 1){return;}//如果大于1个手指，则不处理
+        
+        this.lockSlide=false;
+        this._touchstartX=e.touches[0].pageX;
+        this._touchstartY=e.touches[0].pageY;
+
+		this.touchInitPos = this.opts.isVertical ? e.touches[0].pageY:e.touches[0].pageX; // 每次move的触点位置
+		this.deltaX1 = this.touchInitPos;//touchstart的时候的原始位置
+
+		this.startPos = 0;
+		this.startPosPrev = -this.scrollDist;
+		this.startPosNext = this.scrollDist;
+		//手指滑动的时候禁用掉动画
+		if (this._next) {
+			self._next.style.cssText+='-webkit-transition-duration:0;'
+		}
+
+		self._current.style.cssText+='-webkit-transition-duration:0;'
+		if (this._prev) {
+			self._prev.style.cssText+='-webkit-transition-duration:0;'
+		}
+	},
+	_touchmove : function (e) {
+        var parent=e.target;
+        do {
+            parent=parent.parentNode;
+        } while (parent && parent!=this.wrap);
+ 
+        if (!parent && e.target!=this.wrap ) {
+            return ;
+        }
+
+        var self = this;
+		if(e.touches.length !== 1 || this.lockSlide){return;}
+
+        var gx=Math.abs(e.touches[0].pageX - this._touchstartX);
+        var gy=Math.abs(e.touches[0].pageY - this._touchstartY);
+        
+        //如果手指初始滑动的方向跟页面设置的方向不一致  就不会触发滑动  这个主要是避免误操作, 比如页面是垂直滑动, 在某一页加了横向滑动的局部动画, 那么左右滑动的时候要保证页面不能上下移动. 这里就是做这个的.
+        if (gx>gy && this.opts.isVertical) { //水平滑动
             this.lockSlide=true;
             return ;
-        }else if(gx<gy &&="" !this.opts.isvertical){="" 垂直滑动="" this.lockslide="true;" return="" ;="" }="" if="" (this.opts.noslide="" this.opts.noslide.indexof(this.index)="">=0) {
+        }else if(gx<gy && !this.opts.isVertical){ //垂直滑动
+            this.lockSlide=true;
+            return ;
+        }
+
+        if (this.opts.noslide && this.opts.noslide.indexOf(this.index)>=0) {
             //noslideBack 默认值是false   默认是禁用滑动后 前后都不能再滑动,
             //但是当noslideBack为true时, 禁用了这一页的滑动, 那么往下是划不动了  但是可以往上滑
             if ( !this.opts.noslideBack || (this.opts.isVertical ? (e.touches[0].pageY - this._touchstartY < 0) : (e.touches[0].pageX - this._touchstartX < 0)) ) {
@@ -197,7 +332,26 @@ iSlider.prototype={
 		this.startPos = this.totalDist;
 		
 		//处理上一张和下一张
-		if (this.totalDist<0) {="" 露出下一张="" if="" (this._next)="" this.totaldist2="this.startPosNext" +="" currentx="" -="" this.touchinitpos;="" self._next.style.csstext="" this.startposnext="this.totalDist2;" }="" }else="" 露出上一张="" (this._prev)="" self._prev.style.csstext="" this.startposprev="this.totalDist2;" this.touchinitpos="currentX;" },="" _touchend="" :="" function="" (e)="" if(this.deltax2="" <="" -this.opts.triggerdist){="" this.next();=""> this.opts.triggerDist){
+		if (this.totalDist<0) {//露出下一张
+			if (this._next) {
+				this.totalDist2 = this.startPosNext + currentX - this.touchInitPos;
+				self._next.style.cssText += this._getTransform(this.totalDist2+'px');
+				this.startPosNext = this.totalDist2;
+			}
+		}else {//露出上一张
+			if (this._prev) {
+				this.totalDist2 = this.startPosPrev + currentX - this.touchInitPos;
+				self._prev.style.cssText += this._getTransform(this.totalDist2+'px');
+				this.startPosPrev = this.totalDist2;
+			}
+		}
+
+		this.touchInitPos = currentX;
+	},
+	_touchend : function (e) {
+		if(this.deltaX2 < -this.opts.triggerDist){
+			this.next();
+		}else if(this.deltaX2 > this.opts.triggerDist){
 			this.prev();
 		}else{
 			this._itemReset();
@@ -234,7 +388,52 @@ iSlider.prototype={
 
         var imgs=[], loaded=1;
         var total=imgurls.length+1;
-        for (var i=0; i<imgurls.length; i++)="" {="" imgs[i]="new" image();="" imgs[i].src="imgurls[i];" imgs[i].onload="imgs[i].onerror=imgs[i].onabort=function" (e)="" loaded++;="" if="" (this.src="==" imgurls[0]="" &&="" e.type="==" 'load')="" cleartimeout(fallback)="" }="" checkloaded();="" this.onload="this.onerror=this.onabort=null;" try="" self.opts.onloading.call(self,1,total);="" catch="" function="" checkloaded()="" self.opts.onloading.call(self,loaded,total);="" (loaded="=total)" (fallback)="" self._pageinit();="" imgs="null;" (self.opts.preloadingimgs="" self.opts.preloadingimgs.length)="" self.preloading();="" },="" **="" *="" 滑动到上一页="" @example="" s1.prev();="" prev:function="" ()="" var="" self="this;" (!this._current="" ||="" !this._prev)="" this._itemreset();="" return="" ;="" (this.index=""> 0) {
+        for (var i=0; i<imgurls.length; i++) {
+            imgs[i]=new Image();
+            imgs[i].src=imgurls[i];
+            imgs[i].onload=imgs[i].onerror=imgs[i].onabort=function (e) {
+                loaded++;
+                if (this.src === imgurls[0] && e.type === 'load') {
+                    clearTimeout(fallback)
+                }
+                checkloaded();
+                this.onload=this.onerror=this.onabort=null;
+            }
+        }
+
+        try {
+            self.opts.onloading.call(self,1,total);
+        } catch (e) { }
+
+        function checkloaded() {
+            try {
+                self.opts.onloading.call(self,loaded,total);
+            } catch (e) { }
+            if (loaded==total) {
+                if (fallback) {
+                    clearTimeout(fallback)
+                }
+                self._pageInit();
+                imgs=null;
+                if (self.opts.preLoadingImgs && self.opts.preLoadingImgs.length) {
+                    self.preloading();
+                }
+            }
+        }
+    },
+    /** 
+     * 滑动到上一页
+     * @example
+        s1.prev();
+     */
+    prev:function () {
+        var self = this;
+
+        if (!this._current || !this._prev) {
+            this._itemReset();
+            return ;
+        }
+        if (this.index > 0) {
             this.index--;
         }else {
             this._itemReset();
@@ -361,4 +560,4 @@ if (typeof module == 'object') {
     module.exports=iSlider;
 }else {
     window.iSlider=iSlider;
-}</imgurls.length;></0)></gy></this.length-1)></this._tpl.length;>
+}
