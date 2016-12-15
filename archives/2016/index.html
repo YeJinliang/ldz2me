@@ -259,6 +259,34 @@ classes that you can use:
     <li>
 
       <h2 class="post-list__post-title post-title">
+        <a href="/2016/12/15/iOS渐变效果处理/" title="link to iOS渐变效果处理">iOS渐变效果处理</a>
+      </h2>
+
+      <div class="excerpt">
+      1.视图渐变效果123456789CAGradientLayer * gradientLayer = [CAGradientLayer layer];gradientLayer.frame = view.bounds;[view.layer addSublayer:gradientLayer];//设置渐变颜色gradientLayer.colors = @[(__bridge id)[UIColor colorWithWhite:0 alpha:0].CGColor,                         (__bridge id)[UIColor colorWithWhite:0&hellip;&hellip;
+      </div>
+      
+      <div class="post-list__meta">
+
+        <time datetime="2016-12-15" class="post-list__meta--date date">2016-12-15</time>
+        <span class="post-meta__tags tags">
+
+          
+            &#8226;
+            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
+          
+        </span> 
+        <a href="/2016/12/15/iOS渐变效果处理/" class="btn-more">more...</a>
+      </div>
+
+      
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
         <a href="/2016/11/30/iOS线上Bug处理/" title="link to iOS线上Bug处理">iOS线上Bug处理</a>
       </h2>
 
@@ -522,35 +550,6 @@ This is a bug in Git; when using HTTPS it will use chunked encoding for&hellip;&
           
         </span> 
         <a href="/2016/03/28/关于Hexo配置githubWebhook出现的问题/" class="btn-more">more...</a>
-      </div>
-
-      
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2016/03/25/最近项目遇到的一些问题/" title="link to 最近项目遇到的一些问题">最近项目遇到的一些问题</a>
-      </h2>
-
-      <div class="excerpt">
-      1.「bug」Debug没问题 ，Release崩溃。之前版本打包的时候，测试一路畅通，打包到蒲公英一类众测各种闪退。苦逼！之后将Run 模式改为Release进行测试。发现每次崩在 application: didFinishLaunchingWithOptions: 方法里的 [self.window makeKeyAndVisible]; 。查询了很多资料也没有找到原因。最后发现，因为我们对UIColor进行了扩展，而在扩展的时候我们大哥为了炫技非要给我强行秀，写了个自动解析方法名然后根据方法名取不同色值的类方法，如下：
-12345678+ (UIColor *)colorWithMet&hellip;&hellip;
-      </div>
-      
-      <div class="post-list__meta">
-
-        <time datetime="2016-03-25" class="post-list__meta--date date">2016-03-25</time>
-        <span class="post-meta__tags tags">
-
-          
-            &#8226;
-            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
-          
-        </span> 
-        <a href="/2016/03/25/最近项目遇到的一些问题/" class="btn-more">more...</a>
       </div>
 
       
