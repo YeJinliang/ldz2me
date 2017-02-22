@@ -245,6 +245,125 @@
     </item>
     
     <item>
+      <title>移动用户行为分析工具</title>
+      <link>http://www.ldz2.me/2016/06/17/%E7%A7%BB%E5%8A%A8%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</link>
+      <guid>http://www.ldz2.me/2016/06/17/%E7%A7%BB%E5%8A%A8%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</guid>
+      <pubDate>Fri, 17 Jun 2016 02:24:55 GMT</pubDate>
+      <description>
+      
+        &lt;p&gt;移动应用开发中总会遇到集成第三方分析工具的情况。为了促进产品对用户的粘性，大部分情况下运营人员会选择他们经常使用的第三方平台，开发人员负责集成开发就好了，极少数&lt;br&gt;&lt;a href=&quot;https://developer.yahoo.com/analytics&quot; targe
+      
+      </description>
+      
+      <content:encoded>&lt;p&gt;移动应用开发中总会遇到集成第三方分析工具的情况。为了促进产品对用户的粘性，大部分情况下运营人员会选择他们经常使用的第三方平台，开发人员负责集成开发就好了，极少数&lt;br&gt;&lt;a href=&quot;https://developer.yahoo.com/analytics&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Flurry&lt;/a&gt;：﻿&lt;/p&gt;
+&lt;p&gt;1）用户：﻿&lt;/p&gt;
+&lt;p&gt;Flurry已经被雅虎并购，相关客户基本为欧美企业，如eBay、Yahoo、Hulu和Skype等超过11万家公司。﻿&lt;/p&gt;
+&lt;p&gt;﻿﻿﻿&lt;/p&gt;
+&lt;p&gt;图片发自简书App&lt;br&gt;2）平台：﻿&lt;/p&gt;
+&lt;p&gt;iOS、安卓。﻿﻿&lt;/p&gt;
+&lt;p&gt;优点：﻿&lt;/p&gt;
+&lt;p&gt;1） 拥有非常全面的功能，而且并不仅仅限于数据统计、分析功能，目前还提供App Circle广告、推广平台功能。﻿&lt;/p&gt;
+&lt;p&gt;2） 提供了开发者自身应用间的各种用户、会话转化，并提供转化漏斗功能，特别适合开发多个应用的开发者、厂商使用。﻿&lt;/p&gt;
+&lt;p&gt;3） 用户可以根据自身需求自行创建Dashboard面板。﻿&lt;/p&gt;
+&lt;p&gt;4） 精细的用户群划分，以及方便的全局多维度筛选。﻿&lt;/p&gt;
+&lt;p&gt;缺点：﻿&lt;/p&gt;
+&lt;p&gt;1） 数据统计有延迟。精确性与稳定性不能保证。在国内访问Flurry并不稳定，虽然比Google Analytics要好很多，访问速度也可以接受，但这毕竟只是前台服务，数据统计真正的核心在于后台的数据收集，前台服务能够访问，并不能说明后台数据收集也能顺畅进行。﻿&lt;/p&gt;
+&lt;p&gt;2） 概念参数等比较复杂，集成比较耗时。数据计算不正确。﻿&lt;/p&gt;
+&lt;p&gt;3） 不能提供渠道分析，用户地域区分不精确。﻿&lt;/p&gt;
+&lt;p&gt;友盟：﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.umeng.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.umeng.com/&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;1）用户：﻿&lt;/p&gt;
+&lt;p&gt;国内目前知名度最高的移动应用数据统计分析平台，13年被阿里收购。相关用户为国内知名企业，如暴风、今日头条、优酷、唱吧、聚美、南方周末等公司。APP数量级超60W+。&lt;a href=&quot;http://www.umeng.com/aboutus_partner&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.umeng.com/aboutus_partner&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;图片发自简书App
+﻿﻿﻿&lt;/p&gt;
+&lt;p&gt;2）平台：﻿&lt;/p&gt;
+&lt;p&gt;iOS、安卓。﻿﻿&lt;/p&gt;
+&lt;p&gt;优点：﻿&lt;/p&gt;
+&lt;p&gt;1） 数据实时统计。完善的交叉推广和广告监测服务。﻿&lt;/p&gt;
+&lt;p&gt;2） 友盟统计分析给移动应用开发商统计和分析用户属性和用户行为数据，帮助开发商利用数据进行产品运营和推广。﻿&lt;/p&gt;
+&lt;p&gt;3） 网站的产品中心的统计分析从各个方面统计了各个时间段的用户使用行为，并用图表直观表示出来，分析全面、直观；﻿&lt;/p&gt;
+&lt;p&gt;4） 通过友盟统计可以查看到用户的终端属性：例如机型、网络、地域，这样开发商可以根据用户的各个阶层制定相应的开发策略，对于开发商来说是非常友好的；﻿&lt;/p&gt;
+&lt;p&gt;5） 友盟统计可以针对不同的分发渠道进行统计，开发者在集成的时候设置渠道，然后当应用在设备上运行的时候，后台就会统计到渠道信息，方便查看不同渠道的统计；﻿&lt;/p&gt;
+&lt;p&gt;6） 友盟统计分析可以采用漏斗模型去管理多个自定义事件，提高最终目标的转化率，同时也提高了统计效率；﻿&lt;/p&gt;
+&lt;p&gt;7） 友盟统计分析服务是对移动应用的各个方面进行统计分析，可以对应用进行统计，开发商可以对这些统计进行分析，并作出相应改动。对于需要使用到统计服务的开发者来说，友盟统计集成比较简单，统计功能也比较全面，是个不错的选择。﻿&lt;/p&gt;
+&lt;p&gt;8） 友盟用户规模最大，在相应集成与客户服务方面较为完善。﻿&lt;/p&gt;
+&lt;p&gt;缺点：﻿&lt;/p&gt;
+&lt;p&gt;1） 友盟在数据统计的功能设置上，还是比较全面的，但在数据分析略有不足。﻿&lt;/p&gt;
+&lt;p&gt;2） 不支持自定义控制台。﻿&lt;/p&gt;
+&lt;p&gt;3） 在社会化组件分析统计时需要集成友盟社会化分享SDK。﻿﻿&lt;/p&gt;
+&lt;p&gt;Talking Data：﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.talkingdata.com/products.jsp?languagetype=zh_CN&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.talkingdata.com/products.jsp?languagetype=zh_CN&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;1）用户：﻿&lt;/p&gt;
+&lt;p&gt;成立于11年，是国内最大的独立第三方移动数据服务平台。相关客户既有腾讯、百度、网易、搜狐、360、Google、Yahoo、Zynga、宝开、滴滴打车等知名互联网企业，又有中国银联、招商银行、中信银行、平安保险、国信证券、Orchirly、碧桂园、亨得利、全城热恋等传统行业巨头。﻿﻿&lt;/p&gt;
+&lt;p&gt;﻿﻿﻿&lt;/p&gt;
+&lt;p&gt;图片发自简书App&lt;br&gt;2）平台：﻿&lt;/p&gt;
+&lt;p&gt;iOS、安卓。﻿﻿&lt;/p&gt;
+&lt;p&gt;优点：﻿&lt;/p&gt;
+&lt;p&gt;1） 相对完善的智能设备TDID（TalkingData Device ID）识别体系，高设备识别准确率。﻿&lt;/p&gt;
+&lt;p&gt;2） TalkingData和多家数据服务商合作，建立了一套基于IP地址、位置、WIFI背景和用户行为分析的归属地分析系统，大大提升了归属地判断的准确度。﻿&lt;/p&gt;
+&lt;p&gt;3） TalkingData致力于数据的研究。数据挖掘分析算法等方面专业。﻿&lt;/p&gt;
+&lt;p&gt;4） 最新灵动分析，免代码打点。简单高效。功能和友盟不相上下。﻿&lt;/p&gt;
+&lt;p&gt;5） 保持独立和专注，数据安全性更高。﻿&lt;/p&gt;
+&lt;p&gt;缺点：﻿&lt;/p&gt;
+&lt;p&gt;1） 不像友盟拥有应用联盟，不能自定义控制台。﻿﻿&lt;/p&gt;
+&lt;p&gt;Google Analytics：﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;1）用户：﻿&lt;/p&gt;
+&lt;p&gt;Google Analytics 移动版的用户也是海外企业。如Lexad Internet Marketing（享赢）、TrueMetrics（触脉）等。﻿&lt;/p&gt;
+&lt;p&gt;2）平台：﻿&lt;/p&gt;
+&lt;p&gt;iOS、安卓。﻿﻿&lt;/p&gt;
+&lt;p&gt;优点：﻿&lt;/p&gt;
+&lt;p&gt;1） Google Analytics之前主要提供网页统计，可以和网页版的统计数据做整合。﻿&lt;/p&gt;
+&lt;p&gt;2） 统计功能更为强大。支持自定义的控制台。﻿&lt;/p&gt;
+&lt;p&gt;缺点：﻿&lt;/p&gt;
+&lt;p&gt;1） Google最大缺点就是GFW，申请应用需要翻墙，即便翻墙后申请成功，在客户端手机上集成访问，依然需要在手机端翻墙或者使用VPN，这给中国大陆的移动开发者带来了最大麻烦，我们也没有能力强迫所有的手机端用户使用翻墙软件，毕竟面对越狱或者ROOT，许多手机失去了质保功能。﻿&lt;/p&gt;
+&lt;p&gt;2） 数据统计有延迟。精确性与稳定性不能保证。﻿﻿﻿&lt;/p&gt;
+&lt;p&gt;相关：﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;TalkingData iOS版V1.2.7服务评测﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.devstore.cn/evaluation/testInfo/101-225.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.devstore.cn/evaluation/testInfo/101-225.html&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;Google Analytics统计安卓版服务评测﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.devstore.cn/evaluation/testInfo/13-40.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.devstore.cn/evaluation/testInfo/13-40.html&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;友盟统计分析iOS版服务评测﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.devstore.cn/evaluation/testInfo/102-137.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.devstore.cn/evaluation/testInfo/102-137.html&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;平台分析比较﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/marlene0312/article/details/17009909&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/marlene0312/article/details/17009909&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://mobile.zdnet.com.cn/2012/0428/2091122.shtml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://mobile.zdnet.com.cn/2012/0428/2091122.shtml&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;移动统计分析TalkingData的几大优势﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/TalkdingData-Mobile-Statistical-Analysis&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.infoq.com/cn/articles/TalkdingData-Mobile-Statistical-Analysis&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;友盟 | 移动大数据平台架构思想以及实践经验﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.36dsj.com/archives/35405&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.36dsj.com/archives/35405&lt;/a&gt;﻿&lt;/p&gt;
+&lt;p&gt;使用Flurry来统计和分析用户行为﻿&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/use-flurry-to-statistics-and-analysis-user-behavior&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.infoq.com/cn/articles/use-flurry-to-statistics-and-analysis-user-behavior&lt;/a&gt;﻿﻿&lt;/p&gt;
+&lt;p&gt;附：﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;移动统计分析工具的选择﻿&lt;/p&gt;
+&lt;p&gt;这个步骤就是正式开始了移动应用分析的实践环节了,是收集和获取数据的过程。选择系统就是指要选择一个适合自己的移动统计分析工具来满足既定的需求,这里仅从满足移动应用基础性需求的角度列举出以下几点供大家参考:﻿&lt;/p&gt;
+&lt;p&gt;1)开发简单﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;移动开发者应该尽量选择SDK轻便易于嵌入的移动统计分析工具,尤其是现在国内大部分 开发者都是以小团队为主,技术研发人员不充足的情况下,最好要选用符合行业技术规范的老 牌开发者服务公司的产品,不仅开发学习成本较低,也有利于满足后续打通公司内部其他产品 之间数据交换或应用升级的扩展性要求。﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;2)数据全面﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;虽然移动开发者最关心的数据就是上文提到根据应用发展目标而制定出来的KPI指标,但是除了这些基本数据指标之外,开发者还应该关注更加全面的指标以便深入了解自己的应用。全面的指标不是一味追求大而全,而是开发者最想要看到的数据指标,所以开发者除了关注基本KPI指标外,还要考虑后续产品升级之后还需要哪些其他数据指标,评估一下分析工具是否 能满足后续的发展需求,避免出现因为某几个指标的缺失而更换整个统计分析系统的情况出现。﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;3)功能完备﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;移动应用统计分析工具应该至少具备用户属性分析、用户使用行为分析、渠道版本分析、终端设备分析等基本功能,这些是最基础的分析功能。除此之外,良好的受众分析也是必要的,这样能够帮助开发者更宏观地了解自己的用户群体,以指导后续推广和广告投放更精准;而强大的数据多维度交叉分析功能也能提高开发者对于应用数据的使用效率,发现更多深度的问题;还有更高级的开发工具组件功能是否齐全,如自定义事件、错误分析、开发测试环境 等,让开发者能够有更多定制化服务才能满足个性化需求。另外一个维度是,即便这些高级功 能都有覆盖,也要考核功能的分析深度和用户体验,例如页面访问流分析,提供可视化交互图 分析要比简单的柱状图或漏斗图直观易懂,像气泡图(Bubble Diagram)这样的图形化分析 报告也是用户兴趣分析中的一大利器。﻿&lt;/p&gt;
+&lt;p&gt;4)系统可靠﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;由于收集和整理移动应用的历史数据对今后的数据分析至关重要,所以在选择分析工具的 时候要非常慎重,建议选择行业内口碑较好、大型、稳定的统计分析系统提供商,这样的提供 商一般都具备较强的硬件资源和数据库安全实力,他们能够保证稳定、长期地提供数据统计分 析服务。同时建议选择服务器规模大而且设备在国内的服务商,因为移动应用统计大部分采用 SDK嵌入、回收相关数据日志的方式来收集数据的,若选择国外提供商往往会在数据收集和传 输过程中出现丢包、遗漏等现象,大大降低了数据的全面性和可靠性,参考价值有限。﻿&lt;/p&gt;
+&lt;p&gt;﻿&lt;/p&gt;
+&lt;p&gt;最后建议选择行业中优质、服务全面的数据统计分析服务商,因为开发者很可能将来还会有网站统计、云存储、开发环境等需求,这样将自己的全部产品都放在一个平台上,便于未来产品之间数据的打通,进而方便横向分析和对比,对旗下产品进行整体监测和优化。当然,任何的统计分析工具都只是一种工具,还需要正确的应用分析方法论的理论指导,才能保证恰当地应用到实际运营工作中去。&lt;/p&gt;
+</content:encoded>
+      
+      <comments>http://www.ldz2.me/2016/06/17/%E7%A7%BB%E5%8A%A8%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/#disqus_thread</comments>
+    </item>
+    
+    <item>
       <title>蓝色星球的最后一方净土</title>
       <link>http://www.ldz2.me/2016/05/13/%E8%93%9D%E8%89%B2%E6%98%9F%E7%90%83%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E6%96%B9%E5%87%80%E5%9C%9F/</link>
       <guid>http://www.ldz2.me/2016/05/13/%E8%93%9D%E8%89%B2%E6%98%9F%E7%90%83%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E6%96%B9%E5%87%80%E5%9C%9F/</guid>
