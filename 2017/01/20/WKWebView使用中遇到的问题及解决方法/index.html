@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      WKWebView使用中遇到的问题及解决方法 | That&#39;s all to Me 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Liu Dezhi">
+    
+    
+
+    <meta name="description" content="本文适于充分掌握WKWebView的使用，但是在使用中遇到了与博主相同的问题的小伙伴阅读。
+WKWebView加载Html文本WKWebView加载HTML字符串时出现的问题，如图所示，我们的Html块不像UIWebView那样自适应屏幕大小。解决方法如下：123456789101112WKUserContentController * userContent = [WKUserContentCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView使用中遇到的问题及解决方法 | That's all to Me">
+<meta property="og:url" content="http://www.ldz2.me/2017/01/20/WKWebView使用中遇到的问题及解决方法/index.html">
+<meta property="og:site_name" content="That's all to Me">
+<meta property="og:description" content="本文适于充分掌握WKWebView的使用，但是在使用中遇到了与博主相同的问题的小伙伴阅读。
+WKWebView加载Html文本WKWebView加载HTML字符串时出现的问题，如图所示，我们的Html块不像UIWebView那样自适应屏幕大小。解决方法如下：123456789101112WKUserContentController * userContent = [WKUserContentCo">
+<meta property="og:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageWKHtmlPage.png">
+<meta property="og:updated_time" content="2017-02-22T08:28:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView使用中遇到的问题及解决方法 | That's all to Me">
+<meta name="twitter:description" content="本文适于充分掌握WKWebView的使用，但是在使用中遇到了与博主相同的问题的小伙伴阅读。
+WKWebView加载Html文本WKWebView加载HTML字符串时出现的问题，如图所示，我们的Html块不像UIWebView那样自适应屏幕大小。解决方法如下：123456789101112WKUserContentController * userContent = [WKUserContentCo">
+<meta name="twitter:image" content="http://7xs9gl.com1.z0.glb.clouddn.com/imageWKHtmlPage.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for That&#39;s all to Me"><img src="/avatar.png" width="80" alt="That&#39;s all to Me logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">That&#39;s all to Me</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          哈喽 ~
+          <span id="hello">晚安</span>
+          ，这里是toMe，我是柳德智，一个iOS Coder，很高兴在这里遇见你，你在这里可以看到关于我的一切。希望这是一次能够让你感到相逢恨晚的初见。(⁎⁍̴̛ᴗ⁍̴̛⁎)‼ 
+          <script>     
+            var today = new Date();
+            var hour = today.getHours();
+            var  spanHello = document.getElementById("hello");
+            if (hour >= 4 && hour < 10) {
+              spanHello.innerText = "早安";
+           } else if (hour >= 17 && hour < 24 ) { 
+            spanHello.innerText = "晚安";
+
+          } else if (hour >= 10 && hour < 14 ) { 
+            spanHello.innerText = "午安";
+
+          } else if (hour >= 0 && hour < 4 ) { 
+            spanHello.innerText = "别熬夜了";
+
+          } else {
+            spanHello.innerText = "日安";
+
+          } 
+        </script>
+          <!-- 夜 -->
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <p class="panel-cover__description panel-subtitle">勿感于时，勿伤于怀</p>
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/book" title="" class="">资料</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    <!-- Font Awesome Icons-->
+    
+    
+      
+    <!-- Font Awesome Icons -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://github.com/YeJinliang" title="YeJinliang 的 GitHub" target="_blank">
+    <i class='social_fonts fa fa-github'></i>
+    <span class="label">GitHub</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="http://weibo.com/mogufeng" title="夜锦凉丶的微博" target="_blank">
+    <i class='social_fonts fa fa-weibo'></i>
+    <span class="label">Weibo</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="https://plus.google.com/101026874049567827395" title="YeJinliang 的 Google+" target="_blank">
+    <i class='social_fonts fa fa-google-plus'></i>
+    <span class="label">Google+</span>
+    </a>
+    </li>
+    
+    <!-- Twitter -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://twitter.com/YeJinliang" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-twitter'></i>
+    <span class="label">Twitter</span>
+    </a>
+    </li>
+
+    <li class="navigation__item navigation_social_item">
+    <a href="https://www.facebook.com/jinliang.ye.5" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-facebook'></i>
+    <span class="label">Facebook</span>
+    </a>
+    </li>
+
+    <!-- RSS -->
+    <li class="navigation__item navigation_social_item">
+    <a href="http://www.ldz2.me/rss2.xml" rel="author" title="RSS" target="_blank">
+    <i class='social_fonts fa fa-rss'></i>
+    <span class="label">RSS</span>
+    </a>
+    </li>
+    
+    <!-- Email -->
+    <li class="navigation__item navigation_social_item">
+    <a href="mailto:yjldeveloper@gmail.com" title="邮件联系我">
+    <i class='social_fonts fa fa-envelope'></i>
+    <span class="label">Email</span>
+    </a>
+    </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">WKWebView使用中遇到的问题及解决方法</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-01-20" class="post-meta__date date">2017-01-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Development/">Development</a>, <a class="tags-link" href="/tags/WKWebView/">WKWebView</a>, <a class="tags-link" href="/tags/iOS/">iOS</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>本文适于充分掌握WKWebView的使用，但是在使用中遇到了与博主相同的问题的小伙伴阅读。</p>
+<h3 id="WKWebView"><a href="#WKWebView" class="headerlink" title="WKWebView"></a>WKWebView</h3><h4 id="加载Html文本"><a href="#加载Html文本" class="headerlink" title="加载Html文本"></a>加载Html文本</h4><p>WKWebView加载HTML字符串时出现的问题，如图所示，我们的Html块不像UIWebView那样自适应屏幕大小。<br><img src="http://7xs9gl.com1.z0.glb.clouddn.com/imageWKHtmlPage.png" alt=""><br>解决方法如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">WKUserContentController * userContent = [WKUserContentController new];</span><br><span class="line">WKWebViewConfiguration * webConfig = [WKWebViewConfiguration new];</span><br><span class="line"><span class="comment">// 自适应屏幕宽度js</span></span><br><span class="line"><span class="built_in">NSString</span> * jsStr = <span class="string">@"var meta = document.createElement('meta');\</span><br><span class="line">                        meta.setAttribute('name', 'viewport');\</span><br><span class="line">                        meta.setAttribute('content', 'width=device-width');\</span><br><span class="line">                        document.getElementsByTagName('head')[0].appendChild(meta);"</span>;</span><br><span class="line">WKUserScript * userScript = [[WKUserScript alloc] initWithSource:jsStr injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:<span class="literal">YES</span>];</span><br><span class="line"></span><br><span class="line">[userContent addUserScript:userScript];</span><br><span class="line">webConfig.userContentController = userContent;</span><br><span class="line">WKWebView * webView = [WKWebView initWithFrame:frame configuration:webConfig];</span><br></pre></td></tr></table></figure><br>利用向Html片段中追加js来限制WKWebView适应屏幕。核心代码<code>width=device-width</code>。</p>
+<h4 id="缩放问题"><a href="#缩放问题" class="headerlink" title="缩放问题"></a>缩放问题</h4><p>加载Html时候，我们希望Html块能够像native的控件一样，这样我们就要限制WKWebView的一些功能比如缩放。<br>网上有很多人利用<code>-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView;</code>方法来禁止WKWebView的缩放。但是，我们之前已经禁止了WKWebView的滚动，<code>webView.scrollView.scrollEnabled = NO;</code>，这个方法就无效了。<br>最后解决办法依旧是通过js来限制。在<code>content</code>追加<code>maximum-scale=1.0</code>来限制WKWebView缩小放大。</p>
+<h4 id="点击图片查看功能"><a href="#点击图片查看功能" class="headerlink" title="点击图片查看功能"></a>点击图片查看功能</h4><p>很多资讯类APP都有点击Html里面的图片，进行放大查看的功能。<br>这个功能实现的方法如下：<br>1.在代理方法<code>didFinishNavigation</code>中遍历标记全部的图片标签，添加点击事件响应。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js方法遍历图片添加点击事件 返回图片个数</span></span><br><span class="line"><span class="keyword">static</span>  <span class="built_in">NSString</span> * <span class="keyword">const</span> jsGetImages =</span><br><span class="line"><span class="string">@"function getImages()&#123;\</span><br><span class="line">var objs = document.getElementsByTagName(\"img\");\</span><br><span class="line">for(var i=0;i&lt;objs.length;i++)&#123;\</span><br><span class="line">objs[i].onclick=function()&#123;\</span><br><span class="line">document.location=\"myweb:imageClick:\"+this.src;\</span><br><span class="line">&#125;;\</span><br><span class="line">&#125;;\</span><br><span class="line">return objs.length;\</span><br><span class="line">&#125;;"</span>;</span><br><span class="line">[webView evaluateJavaScript:jsGetImages completionHandler:<span class="literal">nil</span>];<span class="comment">//注入js方法</span></span><br><span class="line">[webView evaluateJavaScript:<span class="string">@"getImages()"</span> completionHandler:<span class="literal">nil</span>];</span><br></pre></td></tr></table></figure><br>2.在代理方法<code>didStartProvisionalNavigation</code>中监听跳转Url，判断图片处理。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ([urlStr hasPrefix:<span class="string">@"myweb:imageClick:"</span>]) &#123;</span><br><span class="line">    <span class="built_in">NSString</span> * src = [urlStr stringByReplacingOccurrencesOfString:<span class="string">@"myweb:imageClick:"</span> withString:<span class="string">@""</span>];</span><br><span class="line">    <span class="keyword">if</span> (src.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        [<span class="keyword">self</span> pushPhotoBrowser:src];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>3.处理图片放大。利用<code>MWPhotoBrowser</code>等图片浏览来对图片进行全屏查看。</p>
+<h4 id="WKWebView高度获取"><a href="#WKWebView高度获取" class="headerlink" title="WKWebView高度获取"></a>WKWebView高度获取</h4><p>因为我们的WebView禁止滚动，所以就需要获取整个WebView的高度来设置frame。同样在代理方法<code>didFinishNavigation</code>中获取高度。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[webView evaluateJavaScript:<span class="string">@"document.body.scrollHeight"</span> completionHandler:^(<span class="keyword">id</span> _Nullable item, <span class="built_in">NSError</span> * _Nullable error) &#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> height = [item floatValue];</span><br><span class="line">    webView.height = height;</span><br><span class="line">    <span class="comment">//bolck回调刷新UI</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.refreshViewHeightBlock) &#123;</span><br><span class="line">        <span class="keyword">self</span>.refreshViewHeightBlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/01/20/WKWebView使用中遇到的问题及解决方法/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"ldz2me"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+
+    <span class="footer__copyright">感谢 <a href="https://m.do.co/c/a3d82319af9e">Digital Ocean</a> 为本站提供稳定的 VPS 服务，您可以在 GitHub 找到<a href="https://github.com/YeJinliang/ldz2me">本站源码</a></span>
+    <span class="footer__copyright">&copy; 2016-2017. | 本站由<a href="http://ldz2.me">@夜锦凉丶</a>创建，采用<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
