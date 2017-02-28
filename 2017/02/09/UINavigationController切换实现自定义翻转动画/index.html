@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      UINavigationController切换实现自定义翻转动画 | That&#39;s all to Me 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="Liu Dezhi">
+    
+    
+
+    <meta name="description" content="UINavigationController应该是我们日常项目中最为常用的页面切换方式了。有些情况下，navigationController默认的动画效果无法满足我们对用户交互的期望。所以，对navigationController的转场动画进行自定义。目前自定义的动画效果希望和UIModalTransitionStyle中的水平翻转效果一致。
+问题分解自定义navigationControll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UINavigationController切换实现自定义翻转动画 | That's all to Me">
+<meta property="og:url" content="http://www.ldz2.me/2017/02/09/UINavigationController切换实现自定义翻转动画/index.html">
+<meta property="og:site_name" content="That's all to Me">
+<meta property="og:description" content="UINavigationController应该是我们日常项目中最为常用的页面切换方式了。有些情况下，navigationController默认的动画效果无法满足我们对用户交互的期望。所以，对navigationController的转场动画进行自定义。目前自定义的动画效果希望和UIModalTransitionStyle中的水平翻转效果一致。
+问题分解自定义navigationControll">
+<meta property="og:updated_time" content="2017-02-28T03:46:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UINavigationController切换实现自定义翻转动画 | That's all to Me">
+<meta name="twitter:description" content="UINavigationController应该是我们日常项目中最为常用的页面切换方式了。有些情况下，navigationController默认的动画效果无法满足我们对用户交互的期望。所以，对navigationController的转场动画进行自定义。目前自定义的动画效果希望和UIModalTransitionStyle中的水平翻转效果一致。
+问题分解自定义navigationControll">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+        <a href="/" title="link to homepage for That&#39;s all to Me"><img src="/avatar.png" width="80" alt="That&#39;s all to Me logo" class="panel-cover__logo logo" /></a>
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">That&#39;s all to Me</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          哈喽 ~
+          <span id="hello">晚安</span>
+          ，这里是toMe，我是柳德智，一个iOS Coder，很高兴在这里遇见你，你在这里可以看到关于我的一切。希望这是一次能够让你感到相逢恨晚的初见。(⁎⁍̴̛ᴗ⁍̴̛⁎)‼ 
+          <script>     
+            var today = new Date();
+            var hour = today.getHours();
+            var  spanHello = document.getElementById("hello");
+            if (hour >= 4 && hour < 10) {
+              spanHello.innerText = "早安";
+           } else if (hour >= 17 && hour < 24 ) { 
+            spanHello.innerText = "晚安";
+
+          } else if (hour >= 10 && hour < 14 ) { 
+            spanHello.innerText = "午安";
+
+          } else if (hour >= 0 && hour < 4 ) { 
+            spanHello.innerText = "别熬夜了";
+
+          } else {
+            spanHello.innerText = "日安";
+
+          } 
+        </script>
+          <!-- 夜 -->
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        <p class="panel-cover__description panel-subtitle">勿感于时，勿伤于怀</p>
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">博客</a></li>
+              
+                
+                <li class="navigation__item"><a href="/book" title="" class="">资料</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    <!-- Font Awesome Icons-->
+    
+    
+      
+    <!-- Font Awesome Icons -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://github.com/YeJinliang" title="YeJinliang 的 GitHub" target="_blank">
+    <i class='social_fonts fa fa-github'></i>
+    <span class="label">GitHub</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="http://weibo.com/mogufeng" title="夜锦凉丶的微博" target="_blank">
+    <i class='social_fonts fa fa-weibo'></i>
+    <span class="label">Weibo</span>
+    </a>
+    </li>
+    
+    <li class="navigation__item navigation_social_item">
+    <a href="https://plus.google.com/101026874049567827395" title="YeJinliang 的 Google+" target="_blank">
+    <i class='social_fonts fa fa-google-plus'></i>
+    <span class="label">Google+</span>
+    </a>
+    </li>
+    
+    <!-- Twitter -->
+    <li class="navigation__item navigation_social_item">
+    <a href="https://twitter.com/YeJinliang" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-twitter'></i>
+    <span class="label">Twitter</span>
+    </a>
+    </li>
+
+    <li class="navigation__item navigation_social_item">
+    <a href="https://www.facebook.com/jinliang.ye.5" title="@YeJinliang" target="_blank">
+    <i class='social_fonts fa fa-facebook'></i>
+    <span class="label">Facebook</span>
+    </a>
+    </li>
+
+    <!-- RSS -->
+    <li class="navigation__item navigation_social_item">
+    <a href="http://www.ldz2.me/rss2.xml" rel="author" title="RSS" target="_blank">
+    <i class='social_fonts fa fa-rss'></i>
+    <span class="label">RSS</span>
+    </a>
+    </li>
+    
+    <!-- Email -->
+    <li class="navigation__item navigation_social_item">
+    <a href="mailto:yjldeveloper@gmail.com" title="邮件联系我">
+    <i class='social_fonts fa fa-envelope'></i>
+    <span class="label">Email</span>
+    </a>
+    </li>
+    
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">UINavigationController切换实现自定义翻转动画</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-02-09" class="post-meta__date date">2017-02-09</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+            <font class="categories">
+            &#8226; 分类:
+            <a class="categories-link" href="/categories/工作手札/">工作手札</a>
+            </font>
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Development/">Development</a>, <a class="tags-link" href="/tags/UINavigationController/">UINavigationController</a>, <a class="tags-link" href="/tags/iOS/">iOS</a>, <a class="tags-link" href="/tags/动画/">动画</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>UINavigationController应该是我们日常项目中最为常用的页面切换方式了。有些情况下，navigationController默认的动画效果无法满足我们对用户交互的期望。所以，对navigationController的转场动画进行自定义。目前自定义的动画效果希望和UIModalTransitionStyle中的水平翻转效果一致。</p>
+<h4 id="问题分解"><a href="#问题分解" class="headerlink" title="问题分解"></a>问题分解</h4><p>自定义navigationController水平翻转转场动画的需求问题被我们分解为：1）自定义转场动画、2）实现翻转动画。</p>
+<h5 id="自定义转场动画"><a href="#自定义转场动画" class="headerlink" title="自定义转场动画"></a>自定义转场动画</h5><p>iOS 7 之后的视图控制器切换API（View Controller Transitioning API）是我们自定义转场动画的核心。<br>1）使我们自定义navigationController遵从<code>UINavigationControllerDelegate</code>协议。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">__<span class="keyword">weak</span> YJLNavigationViewController * wSelf = <span class="keyword">self</span>;</span><br><span class="line">wSelf.delegate = wSelf;</span><br></pre></td></tr></table></figure></p>
+<p><code>UINavigationControllerDelegate</code>给我们提供的方法中，<code>animationControllerForOperation:fromViewController:toViewController:</code>方法能够使我们来自定义Push和Pop的动画。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">- (<span class="keyword">id</span> &lt;<span class="built_in">UIViewControllerAnimatedTransitioning</span>&gt;)navigationController:(<span class="built_in">UINavigationController</span> *)navigationController</span><br><span class="line">                                   animationControllerForOperation:(<span class="built_in">UINavigationControllerOperation</span>)operation</span><br><span class="line">                                                fromViewController:(<span class="built_in">UIViewController</span> *)fromVC</span><br><span class="line">                                                  toViewController:(<span class="built_in">UIViewController</span> *)toVC &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (operation == <span class="built_in">UINavigationControllerOperationPush</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> [YJLTransitionAnimator new];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (operation == <span class="built_in">UINavigationControllerOperationPop</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> [YJLTransitionAnimator new];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们观察方法的参数及返回值，这个API返回的是一个协议而不是一个对象。<code>UIViewControllerAnimatedTransitioning</code> 我们通常在这个协议的回调里编写自定义的动画代码，即“切换中应该会发生什么”，负责切换动画的具体内容，任何实现了这一协议的对象被称之为动画控制器。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@protocol</span> <span class="title">UIViewControllerAnimatedTransitioning</span> &lt;<span class="title">NSObject</span>&gt;</span></span><br><span class="line"><span class="comment">// This is used for percent driven interactive transitions, as well as for container controllers that have companion animations that might need to</span></span><br><span class="line"><span class="comment">// synchronize with the main animation. </span></span><br><span class="line">- (<span class="built_in">NSTimeInterval</span>)transitionDuration:(nullable <span class="keyword">id</span> &lt;<span class="built_in">UIViewControllerContextTransitioning</span>&gt;)transitionContext;</span><br><span class="line"><span class="comment">// This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.</span></span><br><span class="line">- (<span class="keyword">void</span>)animateTransition:(<span class="keyword">id</span> &lt;<span class="built_in">UIViewControllerContextTransitioning</span>&gt;)transitionContext;</span><br></pre></td></tr></table></figure>
+<p>协议要求我们实现2个方法，其中一个是描述动画的执行时间，另一个是描述动画的具体执行。这在我们具体实现动画中使用。<br>2）新建动画控制器。<br>我们创建一个自定义对象实现UIViewControllerAnimatedTransitioning协议。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">YJLTransitionAnimator</span> : <span class="title">NSObject</span> &lt;<span class="title">UIViewControllerAnimatedTransitioning</span>&gt;</span></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+<p>下面就可以在YJLTransitionAnimator类中实现翻转动画。</p>
+<h5 id="实现翻转动画"><a href="#实现翻转动画" class="headerlink" title="实现翻转动画"></a>实现翻转动画</h5><p>1）设置动画时长。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSTimeInterval</span>)transitionDuration:(<span class="keyword">id</span>&lt;<span class="built_in">UIViewControllerContextTransitioning</span>&gt;)transitionContext&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3.5</span>f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>2) 动画具体实现。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)animateTransition:(<span class="keyword">id</span>&lt;<span class="built_in">UIViewControllerContextTransitioning</span>&gt;)transitionContext &#123;</span><br><span class="line">    <span class="built_in">UIViewController</span> * fromViewController = [transitionContext viewControllerForKey:<span class="built_in">UITransitionContextFromViewControllerKey</span>];</span><br><span class="line">    <span class="built_in">UIViewController</span> * toViewController = [transitionContext viewControllerForKey:<span class="built_in">UITransitionContextToViewControllerKey</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> * containerView = transitionContext.containerView;</span><br><span class="line">    <span class="built_in">UIView</span> * fromView = [transitionContext viewForKey:<span class="built_in">UITransitionContextFromViewKey</span>];</span><br><span class="line">    <span class="built_in">UIView</span> * toView = [transitionContext viewForKey:<span class="built_in">UITransitionContextToViewKey</span>];</span><br></pre></td></tr></table></figure></p>
+<p>UIViewControllerAnimatedTransitioning的协议都包含一个对象：<code>transitionContext</code>，通过这个对象能获取到切换时的上下文信息，比如从哪个视图控制器切换到哪个视图控制器等。我们从transitionContext获取containerView，这是一个特殊的容器，切换时的动画将在这个容器中进行。<code>UITransitionContextFromViewControllerKey</code>和<code>UITransitionContextToViewControllerKey</code>、<code>UITransitionContextFromViewKey</code>和<code>UITransitionContextToViewKey</code>是获取视图控制器及视图切换层级的Key。对于Push操作来说： fromViewController 是当前顶视图控制器， toViewController 是即将压入的视图控制器。对于Pop操作来说： fromViewController 是即将传出的视图控制器， toViewController 是新的顶视图控制器。</p>
+<p>我们的动画将对fromView和toView的快照进行操作，<code>initialFrameForViewController</code>和<code>finalFrameForViewController</code>是过渡开始和结束时每个 ViewController 的 frame。将要传入的视图添加到containerView上。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fromView.frame = [transitionContext initialFrameForViewController:fromViewController];</span><br><span class="line">toView.frame = [transitionContext finalFrameForViewController:toViewController];</span><br><span class="line">[containerView addSubview：toView];</span><br></pre></td></tr></table></figure></p>
+<p>接下来我们要通过<code>UIGraphicsBeginImageContextWithOptions</code>对两个视图进行截图，使用截图快照进行动画变换操作。 UIGraphicsBeginImageContextWithOptions 创建一个基于位图的上下文（context），并将其设置为当前上下文(context)。<br>参数分析：<br>size：新创建的位图上下文的大小。它同时是由 UIGraphicsGetImageFromCurrentImageContext 函数返回的图形大小。<br>opaque：透明开关，如果图形完全不用透明，设置为YES以优化位图的存储。<br>scale：缩放因子，虽然这里可以用<code>[UIScreen mainScreen].scale</code>来获取，但实际上设为0后，系统就会自动设置正确的比例了。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIImage</span> *fromViewSnapshot;</span><br><span class="line">__block <span class="built_in">UIImage</span> *toViewSnapshot;</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(containerView.bounds.size, <span class="literal">YES</span>, containerView.window.screen.scale);</span><br><span class="line">[fromView drawViewHierarchyInRect:containerView.bounds afterScreenUpdates:<span class="literal">NO</span>];</span><br><span class="line">fromViewSnapshot = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</span><br><span class="line"><span class="built_in">UIGraphicsEndImageContext</span>();</span><br><span class="line"><span class="comment">//避免toView截图截到白屏，延迟截图</span></span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    <span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(containerView.bounds.size, <span class="literal">YES</span>, containerView.window.screen.scale);</span><br><span class="line">    [toView drawViewHierarchyInRect:containerView.bounds afterScreenUpdates:<span class="literal">NO</span>];</span><br><span class="line">    toViewSnapshot = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>();</span><br><span class="line">    <span class="built_in">UIGraphicsEndImageContext</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建动画过程中显示的视图</span></span><br><span class="line"><span class="built_in">UIView</span> *transitionContainer = [[<span class="built_in">UIView</span> alloc] initWithFrame:containerView.bounds];</span><br><span class="line">transitionContainer.opaque = <span class="literal">YES</span>;</span><br><span class="line">transitionContainer.backgroundColor = <span class="built_in">UIColor</span>.blackColor;</span><br><span class="line">[containerView addSubview:transitionContainer];</span><br></pre></td></tr></table></figure></p>
+<p>使用单位矩阵<code>CATransform3DIdentity</code>来初始化3D变换，并将其应用在过渡视图上。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CATransform3D</span> t = <span class="built_in">CATransform3DIdentity</span>;</span><br><span class="line">t.m34 = <span class="number">1.0</span> / <span class="number">-900.0</span>;</span><br><span class="line">transitionContainer.layer.sublayerTransform = t;</span><br></pre></td></tr></table></figure></p>
+<p>CATransform3D 的透视效果通过一个矩阵中一个很简单的元素来控制：m34。m34 用于按比例缩放X和Y的值来计算到底要离视角多远。m34的默认值是0，我们可以通过设置m34为-1.0 / <code>d</code>来应用透视效果，<code>d</code>代表了想象中视角相机和屏幕之间的距离，以像素为单位，那应该如何计算这个距离呢？实际上并不需要，大概估算一个就好了。<br>因为视角相机实际上并不存在，所以可以根据屏幕上的显示效果自由决定它的防止的位置。通常500-1000就已经很好了，但对于特定的图层有时候更小后者更大的值会看起来更舒服，减少距离的值会增强透视效果，所以一个非常微小的值会让它看起来更加失真，然而一个非常大的值会让它基本失去透视效果，</p>
+<p>使用切换前后的视图快照来创建视图。并将其添加到过渡视图上。其中<code>toSquareView</code>围绕Y轴翻转。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CALayer</span> * fromContentLayer = [<span class="built_in">CALayer</span> new];</span><br><span class="line">fromContentLayer.frame = containerView.bounds;</span><br><span class="line">fromContentLayer.rasterizationScale = fromViewSnapshot.scale;</span><br><span class="line">fromContentLayer.contents = (__bridge <span class="keyword">id</span>)fromViewSnapshot.CGImage;</span><br><span class="line"></span><br><span class="line"><span class="built_in">CALayer</span> * toContentLayer = [<span class="built_in">CALayer</span> new];</span><br><span class="line">toContentLayer.frame = containerView.bounds;</span><br><span class="line"></span><br><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    <span class="comment">//禁止隐式动画</span></span><br><span class="line">    <span class="built_in">BOOL</span> wereActiondDisabled = [<span class="built_in">CATransaction</span> disableActions];</span><br><span class="line">    [<span class="built_in">CATransaction</span> setDisableActions:<span class="literal">YES</span>];    </span><br><span class="line">    toContentLayer.rasterizationScale = toViewSnapshot.scale;</span><br><span class="line">    toContentLayer.contents = (__bridge <span class="keyword">id</span>)toViewSnapshot.CGImage;</span><br><span class="line">    [<span class="built_in">CATransaction</span> setDisableActions:wereActiondDisabled];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIView</span> *toSquareView = [[<span class="built_in">UIView</span> alloc] initWithFrame:containerView.bounds];</span><br><span class="line">toSquareView.opaque = <span class="literal">NO</span>;</span><br><span class="line">toSquareView.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">toSquareView.layer.doubleSided = <span class="literal">NO</span>;</span><br><span class="line">toSquareView.layer.transform = <span class="built_in">CATransform3DMakeRotation</span>(M_PI, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">[toSquareView.layer addSublayer:toContentLayer];</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIView</span> *fromSquareView = [[<span class="built_in">UIView</span> alloc] initWithFrame:containerView.bounds];</span><br><span class="line">fromSquareView.opaque = <span class="literal">NO</span>;</span><br><span class="line">fromSquareView.layer.masksToBounds = <span class="literal">YES</span>;</span><br><span class="line">fromSquareView.layer.doubleSided = <span class="literal">NO</span>;</span><br><span class="line">fromSquareView.layer.transform = <span class="built_in">CATransform3DIdentity</span>;</span><br><span class="line">[fromSquareView.layer addSublayer:fromContentLayer];</span><br><span class="line"></span><br><span class="line">[transitionContainer addSubview:toSquareView];</span><br><span class="line">[transitionContainer addSubview:fromSquareView];</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>最后，设置动画翻转，并且在动画完成的时候调用<code>completeTransition</code>，告诉transitionContext你的动画已经结束，这是非常重要的方法，必须调用。到这里我们一个简单的 UINavigationController 切换翻转动画就完成了。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//持续时长</span></span><br><span class="line"><span class="built_in">NSTimeInterval</span> transitionDuration = [<span class="keyword">self</span> transitionDuration:transitionContext];</span><br><span class="line"><span class="built_in">NSTimeInterval</span> startTime = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">NSTimeInterval</span> duration = transitionDuration;</span><br><span class="line"></span><br><span class="line">[<span class="built_in">UIView</span> animateWithDuration:duration delay:startTime options:<span class="number">0</span> animations:^&#123;</span><br><span class="line">    toSquareView.layer.transform = <span class="built_in">CATransform3DIdentity</span>;</span><br><span class="line">    fromSquareView.layer.transform = <span class="built_in">CATransform3DMakeRotation</span>(M_PI, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">&#125; completion:^(<span class="built_in">BOOL</span> finished) &#123;</span><br><span class="line">    <span class="built_in">BOOL</span> wasCancelled = [transitionContext transitionWasCancelled];</span><br><span class="line">    [transitionContainer removeFromSuperview];</span><br><span class="line">    [transitionContext completeTransition:!wasCancelled];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/02/09/UINavigationController切换实现自定义翻转动画/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"ldz2me"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
+
+    <span class="footer__copyright">感谢 <a href="https://m.do.co/c/a3d82319af9e">Digital Ocean</a> 为本站提供稳定的 VPS 服务，您可以在 GitHub 找到<a href="https://github.com/YeJinliang/ldz2me">本站源码</a></span>
+    <span class="footer__copyright">&copy; 2016-2017. | 本站由<a href="http://ldz2.me">@夜锦凉丶</a>创建，采用<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
